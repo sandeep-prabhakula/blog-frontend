@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.image{
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+}

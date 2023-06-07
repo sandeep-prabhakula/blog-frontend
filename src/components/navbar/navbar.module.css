@@ -1,0 +1,32 @@
+.container {
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(0.4);
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.link:hover{
+  padding:1rem;
+  background: linear-gradient(to bottom, #194c33, #bbb);
+  border-radius: 15px;
+  transition: all .4s ease-in-out;
+  box-shadow:2px 4px #706969 ;
+}

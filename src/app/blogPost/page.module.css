@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin: 2rem;
+    /* margin-bottom: 50px; */
+    flex-wrap: wrap;
+    padding: 2rem;
+    border:2px solid rgb(9, 105, 69);
+    border-radius: 15px;
+    box-shadow: #999;
+  }
+  
+  .image{
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  
+  .title{
+    margin-bottom: 10px;
+  }
+  
+  .desc{
+    font-size: 18px;
+    color: #999;
+  }
+
+  @media (max-width:701px){
+    .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+  }
