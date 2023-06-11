@@ -36,7 +36,7 @@ const about = () => {
             I&apos;m committed to providing you with the most up-to-date information and insights into the ever-changing realm of technology. I scours the internet landscape for high-quality articles covering a wide range of topics, from new technology updates to emerging and trending technologies.
             <br />
             <br />
-            I realise how critical it is to stay ahead in this continuously changing digital world. That is why my blog is your one-stop shop for all things technological. We offer something for everyone, whether you&apos;re a seasoned professional or an inquisitive novice. Meticulously prepared articles take deep dives into a variety of tech fields, including detailed explanations, tutorials, and real-world applications.
+            I realise how critical it is to stay ahead in this continuously changing digital world. That is why my blog is your one-stop shop for all things technological. I offer something for everyone, whether you&apos;re a seasoned professional or an inquisitive novice. Meticulously prepared articles take deep dives into a variety of tech fields, including detailed explanations, tutorials, and real-world applications.
           </p>
           <Button url="/contact" text="Contact" />
         </div>
