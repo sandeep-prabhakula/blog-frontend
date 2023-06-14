@@ -24,6 +24,7 @@ export async function generateMetadata({ params }) {
 }
 
 const Blog = async ({ params }) => {
+  let key = 0
   const data = await getData(params.id)
   return (
     <div className={styles.container}>
@@ -64,7 +65,7 @@ const Blog = async ({ params }) => {
       <div className={styles.content}>
         
           {data.description.split('\n\n').map((paragraph) => {
-            return <p className={styles.text}>{paragraph}</p>
+            return <p className={styles.text} key={key++}>{paragraph}</p>
           })}
       </div>
     </div>
