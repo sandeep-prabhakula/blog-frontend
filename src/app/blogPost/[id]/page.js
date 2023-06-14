@@ -29,12 +29,12 @@ const Blog = async ({ params }) => {
     <div className={styles.container}>
       <Head>
         <title>{data.title}</title>
-        <meta name='description' content={`${data.description}`}/>
-        <meta property='og:title' content={`${data.title}`}/>
-        <meta property='og:description' content={`${data.description}`}/>
-        <meta property='og:image' content={`${data.image}`}/>
-        <meta property='og:url' content={`https://codeverse-chronicles.netlify.app/${data.id}`}/>
-        <meta property='og:site_name' content='https://codeverse-chronicles.netlify.app'/>
+        <meta name='description' content={`${data.description}`} />
+        <meta property='og:title' content={`${data.title}`} />
+        <meta property='og:description' content={`${data.description}`} />
+        <meta property='og:image' content={`${data.image}`} />
+        <meta property='og:url' content={`https://codeverse-chronicles.netlify.app/${data.id}`} />
+        <meta property='og:site_name' content='https://codeverse-chronicles.netlify.app' />
 
       </Head>
       <div className={styles.top}>
@@ -62,9 +62,10 @@ const Blog = async ({ params }) => {
         </div>
       </div>
       <div className={styles.content}>
-        <p className={styles.text}>
-          {data.description}
-        </p>
+        
+          {data.description.split('\n\n').map((paragraph) => {
+            return <p className={styles.text}>{paragraph}</p>
+          })}
       </div>
     </div>
   )

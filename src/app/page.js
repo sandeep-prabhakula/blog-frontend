@@ -27,7 +27,7 @@ export default function Home() {
           <Button url="https://sandeep-prabhakula.netlify.app" text="See My Works" />
         </div>
         <div className={styles.item}>
-          <Image src={Hero} alt="" className={styles.img} />
+          <Image src={Hero} alt="codeverseChronicles" className={styles.img} />
         </div>
       </div>
 
