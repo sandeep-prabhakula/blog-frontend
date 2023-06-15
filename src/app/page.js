@@ -15,6 +15,7 @@ export default function Home() {
         <meta property='og:image' content={`${Logo}`} />
         <meta property='og:url' content={`https://codeverse-chronicles.netlify.app`} />
         <meta property='og:site_name' content='Codeverse Chronicles' />
+        <meta name="google-site-verification" content="2KGVreVrJU60xWFLthw0PN0gpZ_CohdonqQ4ZOgWwo0" />
       </Head>
       <div className={styles.container}>
         <div className={styles.item}>

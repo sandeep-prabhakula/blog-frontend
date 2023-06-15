@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
         <meta property='og:image' content={`${Logo}`} />
         <meta property='og:url' content={`https://codeverse-chronicles.netlify.app`} />
         <meta property='og:site_name' content='Codeverse Chronicles' />
+        <meta name="google-site-verification" content="2KGVreVrJU60xWFLthw0PN0gpZ_CohdonqQ4ZOgWwo0" />
       </Head>
       <body className={inter.className}>
         <Navbar />
