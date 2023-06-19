@@ -11,7 +11,7 @@ export const metadata = {
   title: 'Codeverse Chronicles',
   description: 'Knowledge from every corner of the earth',
   image: Logo,
-  url:'https://'
+  url: 'https://'
 }
 
 export default function RootLayout({ children }) {
@@ -22,10 +22,13 @@ export default function RootLayout({ children }) {
         <meta property='og:title' content='Codeverse Chronicles' />
         <meta property='og:description' content='Knowledge from every corner of the earth' />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
         <meta property='og:image' content={`${Logo}`} />
         <meta property='og:url' content={`https://codeverse-chronicles.netlify.app`} />
         <meta property='og:site_name' content='Codeverse Chronicles' />
         <meta name="google-site-verification" content="2KGVreVrJU60xWFLthw0PN0gpZ_CohdonqQ4ZOgWwo0" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1885388326286094"
+          crossorigin="anonymous"></script>
       </Head>
       <body className={inter.className}>
         <Navbar />

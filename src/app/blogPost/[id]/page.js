@@ -35,6 +35,7 @@ const Blog = async ({ params }) => {
         <meta property='og:description' content={`${data.description}`} />
         <meta property='og:image:secure_url' itemProp='image' content={`${data.image}`} />
         <meta property='og:image' content={`${data.image}`} />
+        <meta property="og:locale" content="en_US" />
         <meta property='og:type' content='website'/>
         <meta property='og:url' content={`https://codeverse-chronicles.netlify.app/${data.id}`} />
         <meta property='og:site_name' content='https://codeverse-chronicles.netlify.app' />
