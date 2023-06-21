@@ -16,7 +16,6 @@ async function getData() {
 
 const Blog = async () => {
   let data = await getData();
-  data = data.reverse();
   return (
     <div className={styles.mainContainer}>
       {data.map((item) => (
