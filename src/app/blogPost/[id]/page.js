@@ -68,6 +68,7 @@ const Blog = async ({ params }) => {
       <div className={styles.content}>
         
           {data.description.split('\n\n').map((paragraph) => {
+            if(paragraph.endsWith(":"))return <h3>{paragraph}</h3>
             return <p className={styles.text} key={key++}>{paragraph}</p>
           })}
       </div>
