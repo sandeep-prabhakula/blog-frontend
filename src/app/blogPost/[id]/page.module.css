@@ -50,7 +50,12 @@
   margin-top: 50px;
   font-size: 20px;
   font-weight: 300;
-  color: #999;
+  color: #000;
   text-align: justify;
 }
 
+@media (prefers-color-scheme: dark) {
+  .content{
+    color:#fff;
+  }
+}
