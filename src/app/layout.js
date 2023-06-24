@@ -10,8 +10,17 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Codeverse Chronicles',
   description: 'Knowledge from every corner of the earth',
-  image: Logo,
-  url: 'https://'
+  openGraph:{
+    images:[
+      {
+        url: 'public/logo.png',
+        width:300,
+        height:200
+      }
+    ]
+  },
+  url: 'https://code-verse-chronicles.vercel.app',
+  keywords:['codeverse','chronicles','sandeep','prabhakula','tech','blogs','android','reactjs','nextjs','java','spring boot','blockchain','techphiles','coding','code','SQL','sql','mongoDB']
 }
 
 export default function RootLayout({ children }) {
