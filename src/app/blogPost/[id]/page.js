@@ -20,6 +20,14 @@ export async function generateMetadata({ params }) {
   return {
     title: post.title,
     description: post.description,
+    openGraph: {
+      images: [{
+        url:post.image,
+        width:300,
+        height:200
+      }]
+    },
+    keywords : post.title.split(' ')
   };
 }
 
@@ -30,15 +38,21 @@ const Blog = async ({ params }) => {
     <div className={styles.container}>
       <Head>
         <title>{data.title}</title>
+        <meta name='title' content={`${data.title}`} />
         <meta name='description' content={`${data.description}`} />
+        <meta property='og:type' content='website' />
         <meta property='og:title' content={`${data.title}`} />
-        <meta property='og:description' content={`${data.description}`} />
-        <meta property='og:image:secure_url' itemProp='image' content={`${data.image}`} />
+        <meta property='og:description' content={`${data.description.substring(0, 101) + "..."}`} />
         <meta property='og:image' content={`${data.image}`} />
         <meta property="og:locale" content="en_US" />
-        <meta property='og:type' content='website'/>
         <meta property='og:url' content={`https://codeverse-chronicles.netlify.app/${data.id}`} />
         <meta property='og:site_name' content='https://codeverse-chronicles.netlify.app' />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property='twitter:title' content={`${data.title}`} />
+        <meta property='twitter:url' content={`https://codeverse-chronicles.netlify.app/${data.id}`} />
+        <meta property='twitter:image' content={`${data.image}`} />
+        <meta property='twitter:description' content={`${data.description}`} />
+
 
       </Head>
       <div className={styles.top}>
@@ -66,11 +80,11 @@ const Blog = async ({ params }) => {
         </div>
       </div>
       <div className={styles.content}>
-        
-          {data.description.split('\n\n').map((paragraph) => {
-            if(paragraph.endsWith(":"))return <h3>{paragraph}</h3>
-            return <p className={styles.text} key={key++}>{paragraph}</p>
-          })}
+
+        {data.description.split('\n\n').map((paragraph) => {
+          if (paragraph.endsWith(":")) return <h3>{paragraph}</h3>
+          return <p className={styles.text} key={key++}>{paragraph}</p>
+        })}
       </div>
     </div>
   )
