@@ -10,17 +10,24 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Codeverse Chronicles',
   description: 'Knowledge from every corner of the earth',
-  openGraph:{
-    images:[
+  openGraph: {
+    images: [
       {
-        url: 'public/logo.png',
-        width:300,
-        height:200
+        url: 'https://firebasestorage.googleapis.com/v0/b/codeverse-chronicles.appspot.com/o/logo.png?alt=media&token=868aa706-8e9e-4a8e-92c1-83c94c792ff0',
+        width: 300,
+        height: 200
       }
-    ]
+    ],
+    locale: 'en_US',
+    type: 'website',
+    siteName: 'Codeverse Chronicles',
   },
-  url: 'https://code-verse-chronicles.vercel.app',
-  keywords:['codeverse','chronicles','sandeep','prabhakula','tech','blogs','android','reactjs','nextjs','java','spring boot','blockchain','techphiles','coding','code','SQL','sql','mongoDB']
+  authors: [
+    { name: 'Sandeep Prabhakula' }
+  ],
+  url: 'https://codeverse-chronicles.vercel.app',
+  keywords: ['codeverse', 'chronicles', 'sandeep', 'prabhakula', 'tech', 'blogs', 'android', 'reactjs', 'nextjs', 'java', 'spring boot', 'blockchain', 'techphiles', 'coding', 'code', 'SQL', 'sql', 'mongoDB'],
+
 }
 
 export default function RootLayout({ children }) {
