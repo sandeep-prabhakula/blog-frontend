@@ -22,12 +22,12 @@ export async function generateMetadata({ params }) {
     description: post.description,
     openGraph: {
       images: [{
-        url:post.image,
-        width:300,
-        height:200
+        url: post.image,
+        width: 300,
+        height: 200
       }]
     },
-    keywords : post.title.split(' ')
+    keywords: post.title.split(' ')
   };
 }
 
@@ -58,32 +58,34 @@ const Blog = async ({ params }) => {
       <div className={styles.top}>
         <div className={styles.info}>
           <h1 className={styles.title}>{data.title}</h1>
-
-          <div className={styles.author}>
+          <div className={styles.imageContainer}>
             <Image
               src={data.image}
               alt=""
-              width={40}
-              height={40}
-              className={styles.avatar}
+              width={500}
+              height={400}
+              // fill={true}
+              className={styles.image}
             />
-            <span className={styles.username}>Sandeep Prabhakula</span>
           </div>
         </div>
-        <div className={styles.imageContainer}>
+        <div className={styles.author}>
           <Image
             src={data.image}
             alt=""
-            fill={true}
-            className={styles.image}
+            width={40}
+            height={40}
+            className={styles.avatar}
           />
+          <span className={styles.username}>Sandeep Prabhakula</span>
         </div>
+        <small>Published on: {data.postedAt}</small>
       </div>
       <div className={styles.content}>
 
         {data.description.split('\n\n').map((paragraph) => {
-          if (paragraph.endsWith(":")) return <h3>{paragraph}</h3>
-          return <p className={styles.text} key={key++}>{paragraph}</p>
+          if (paragraph.endsWith(":")) return <h3>{paragraph}<br/></h3>
+          return <p className={styles.text} key={key++}>{paragraph}<br/></p>
         })}
       </div>
     </div>

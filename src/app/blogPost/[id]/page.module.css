@@ -1,26 +1,20 @@
-.container {
-  padding: 1rem;
-}
-
 .top {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .info {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
 .title{
   font-size: 40px;
-}
-
-.desc{
-  font-size: 18px;
-  font-weight: 300;
 }
 
 .author {
@@ -57,5 +51,42 @@
 @media (prefers-color-scheme: dark) {
   .content{
     color:#fff;
+  }
+}
+
+/* Define the container class */
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Define media query for different screen sizes */
+@media (min-width: 576px) {
+  /* Adjust container width for small devices */
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Adjust container width for medium devices */
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Adjust container width for large devices */
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Adjust container width for extra-large devices */
+  .container {
+    max-width: 1140px;
   }
 }
