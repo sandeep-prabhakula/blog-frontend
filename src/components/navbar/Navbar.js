@@ -16,7 +16,7 @@ const links = [
   },
   {
     id: 3,
-    title: "Blog",
+    title: "Blogs",
     url: "/blogPost",
   },
   // {

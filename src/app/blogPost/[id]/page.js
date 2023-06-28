@@ -2,6 +2,8 @@ import React from 'react'
 import Image from 'next/image';
 import styles from './page.module.css'
 import Head from 'next/head';
+import Link from 'next/link';
+
 async function getData(id) {
   const res = await fetch(`https://sandeep-prabhakula-blog-backend.up.railway.app/blog/${id}`, {
     cache: "no-store",
@@ -55,37 +57,38 @@ const Blog = async ({ params }) => {
 
 
       </Head>
+      <div className={styles.path}>
+        <Link href='/'>
+          <small>Codeverse Chronicles &gt; </small>
+        </Link>
+        <Link href='/blogPost'>
+          <small>Blogs &gt; </small>
+        </Link>
+        <small> {data.title} </small>
+      </div>
       <div className={styles.top}>
         <div className={styles.info}>
           <h1 className={styles.title}>{data.title}</h1>
-          <div className={styles.imageContainer}>
-            <Image
-              src={data.image}
-              alt=""
-              width={500}
-              height={400}
-              // fill={true}
-              className={styles.image}
-            />
+          <div className={styles.author}>
+            <small className={styles.username}>Author : Sandeep Prabhakula | Published on: {data.postedAt}</small>
           </div>
+
         </div>
-        <div className={styles.author}>
+      </div>
+      <hr />
+      <div className={styles.content}>
+        <div className={styles.imageContainer}>
           <Image
             src={data.image}
             alt=""
-            width={40}
-            height={40}
-            className={styles.avatar}
+            width={500}
+            height={400}
+            className={styles.image}
           />
-          <span className={styles.username}>Sandeep Prabhakula</span>
         </div>
-        <small>Published on: {data.postedAt}</small>
-      </div>
-      <div className={styles.content}>
-
         {data.description.split('\n\n').map((paragraph) => {
-          if (paragraph.endsWith(":")) return <h3>{paragraph}<br/></h3>
-          return <p className={styles.text} key={key++}>{paragraph}<br/></p>
+          if (paragraph.endsWith(":")) return <h3>{paragraph}<br /></h3>
+          return <p className={styles.text} key={key++}>{paragraph}<br /></p>
         })}
       </div>
     </div>

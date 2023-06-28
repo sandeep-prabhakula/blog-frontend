@@ -31,7 +31,7 @@ const about = () => {
           </p>
         </div>
         <div className={styles.item}>
-          <h1 className={styles.title}>What We Do?</h1>
+          <h1 className={styles.title}>What I Do?</h1>
           <p className={styles.desc}>
             I&apos;m committed to providing you with the most up-to-date information and insights into the ever-changing realm of technology. I scours the internet landscape for high-quality articles covering a wide range of topics, from new technology updates to emerging and trending technologies.
             <br />
