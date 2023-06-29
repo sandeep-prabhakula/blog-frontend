@@ -16,6 +16,7 @@
   flex-wrap: wrap;
   gap: 20px;
   padding: 0.50rem;
+  margin-bottom: 2rem;
   border: 2px solid rgb(9, 105, 69);
   border-radius: 15px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);

@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
-//
+// https://sandeep-prabhakula-blog-backend.up.railway.app
 const Comments = () => {
   const [comments, setComments] = useState([])
   const params = useSearchParams()
   const uid = params.get('uid')
   useEffect(() => {
-    fetch(`https://sandeep-prabhakula-blog-backend.up.railway.app/get-all-comments/${uid}`, {
+    fetch(`http://localhost:8080/get-all-comments/${uid}`, {
       method: 'GET'
     }).then((res)=>res.json())
     .then((data)=>{
