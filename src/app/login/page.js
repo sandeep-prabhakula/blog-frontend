@@ -30,7 +30,7 @@ const Login = () => {
             const data = await res.json()
             setCurrentUser(data)
             window.sessionStorage.setItem('currentUser', JSON.stringify(data))
-            router.push('/comments')
+            router.push(`/comments?uid=${data.id}`)
         }
     }
 

@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+//
 const Comments = () => {
   const [comments, setComments] = useState([])
-  const uid = JSON.parse(window.sessionStorage.getItem('currentUser')).id
+  const params = useSearchParams()
+  const uid = params.get('uid')
   useEffect(() => {
-
     fetch(`https://sandeep-prabhakula-blog-backend.up.railway.app/get-all-comments/${uid}`, {
       method: 'GET'
     }).then((res)=>res.json())
