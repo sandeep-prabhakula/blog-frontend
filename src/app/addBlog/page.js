@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
-const addBlog = () => {
+const AddBlog = () => {
     const router = useRouter()
     const [title, setTitle] = useState("")
     const [imageURL, setImageURL] = useState('')
@@ -79,4 +79,4 @@ const addBlog = () => {
     )
 }
 
-export default addBlog
+export default AddBlog
