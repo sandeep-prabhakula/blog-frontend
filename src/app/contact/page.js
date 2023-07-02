@@ -66,8 +66,8 @@ const Contact = () => {
         <form className={styles.form}>
           {success && <small className={styles.success}>{success}</small>}
           {error && <small className={styles.error}>{error}</small>}
-          <input type="text" placeholder="name" className={styles.input} onChange={onNameChange} />
-          <input type="text" placeholder="email" className={styles.input} onChange={onEmailChange} />
+          <input type="text" placeholder="name" className={styles.input} onChange={onNameChange} required/>
+          <input type="email" placeholder="email" className={styles.input} onChange={onEmailChange} required/>
           <textarea
             className={styles.textArea}
             placeholder="message"
