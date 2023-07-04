@@ -27,7 +27,9 @@ export async function generateMetadata({ params }) {
         url: post.image,
         width: 300,
         height: 200
-      }]
+      }],
+      title:post.title,
+      description:post.description,
     },
     keywords: post.title.split(' ')
   };
