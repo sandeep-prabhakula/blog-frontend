@@ -39,9 +39,7 @@ const AddBlog = () => {
             "postedAt": date,
             "image": imageURL,
             "code": code,
-            "description": desc.replace(/\n\s*\n/g, '\\n\\n\\n\\n') 
-            .replace(/:\s*/g, ':\\n\\n\\n\\n') 
-            .replace(/\s+/g, ' ')
+            "description": desc
         }
         e.preventDefault()
         const res = await fetch(`https://sandeep-prabhakula-blog-backend.up.railway.app/add-blog/${uid}`, {
