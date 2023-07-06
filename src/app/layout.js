@@ -26,7 +26,7 @@ export const metadata = {
     { name: 'Sandeep Prabhakula' }
   ],
   url: 'https://codeverse-chronicles.vercel.app',
-  keywords: ['codeverse', 'chronicles', 'sandeep', 'prabhakula', 'tech', 'blogs', 'android', 'reactjs', 'nextjs', 'java', 'spring boot', 'blockchain', 'techphiles', 'coding', 'code', 'SQL', 'sql', 'mongoDB'],
+  keywords: ['codeverse', 'chronicles', 'sandeep', 'prabhakula', 'tech', 'blogs', 'android', 'reactjs', 'nextjs', 'java', 'spring boot', 'blockchain', 'techphiles', 'coding', 'code', 'SQL', 'sql', 'mongoDB','codeverse chronicles', 'codeverse-chronicles.vercel.app'],
 
 }
 
