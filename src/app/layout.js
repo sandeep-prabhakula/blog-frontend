@@ -34,6 +34,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
+        <link rel="icon" href="./favicon.ico" />
         <meta name="keywords" content="coding, code, codeverse, chronicles, codeverse chronicles, sandeep, sandy, sandeep prabhakula, java, android, spring boot, reactjs, nextjs, mongodb, sql, kotlin, javascript" />
         <meta property='og:title' content='Codeverse Chronicles' />
         <meta property='og:description' content='Knowledge from every corner of the earth' />
