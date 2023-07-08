@@ -33,7 +33,7 @@ const Contact = () => {
       setError('Provide a valid email')
     }
     else {
-      fetch(`${process.env.API_URL}/add-comment`, {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-comment`, {
         method: 'POST',
         body: JSON.stringify(data), headers: {
           "Content-Type": "application/json",

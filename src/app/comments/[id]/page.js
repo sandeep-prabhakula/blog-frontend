@@ -6,7 +6,7 @@ const getData = async(id)=>{
     const commentID = ids[0]
     const uid = ids[1];
     
-    const res = await fetch(`${process.env.API_URL}/comment/${commentID}/${uid}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comment/${commentID}/${uid}`)
     return res.json()
 }
 

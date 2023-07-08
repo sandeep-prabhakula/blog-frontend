@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 async function getData(id) {
-  const res = await fetch(`${process.env.API_URL}/blog/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/${id}`, {
     cache: "no-store",
   });
 
