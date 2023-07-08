@@ -20,7 +20,7 @@ const Login = () => {
                 'email': email,
                 'password': password
             }
-            const res = await fetch('https://sandeep-prabhakula-blog-backend.up.railway.app/login', {
+            const res = await fetch(`${process.env.API_URL}/login`, {
                 method: 'POST',
                 body: JSON.stringify(payload),
                 headers: {

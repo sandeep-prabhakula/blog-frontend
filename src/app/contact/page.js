@@ -33,7 +33,7 @@ const Contact = () => {
       setError('Provide a valid email')
     }
     else {
-      fetch('https://sandeep-prabhakula-blog-backend.up.railway.app/add-comment', {
+      fetch(`${process.env.API_URL}/add-comment`, {
         method: 'POST',
         body: JSON.stringify(data), headers: {
           "Content-Type": "application/json",

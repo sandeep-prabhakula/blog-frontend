@@ -42,7 +42,7 @@ const AddBlog = () => {
             "description": desc
         }
         e.preventDefault()
-        const res = await fetch(`https://sandeep-prabhakula-blog-backend.up.railway.app/add-blog/${uid}`, {
+        const res = await fetch(`${process.env.API_URL}/add-blog/${uid}`, {
             method: 'POST',
             body: JSON.stringify(payload),
             headers: {

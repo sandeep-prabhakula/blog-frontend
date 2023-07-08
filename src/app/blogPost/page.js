@@ -8,7 +8,7 @@ const Blog = () => {
   const [blogs, setBlogs] = useState([])
   const [pageNumber, setPageNumber] = useState(0)
   useEffect(() => {
-    fetch(`https://sandeep-prabhakula-blog-backend.up.railway.app/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
+    fetch(`${process.env.API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data)
