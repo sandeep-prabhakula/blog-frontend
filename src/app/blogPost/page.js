@@ -48,7 +48,7 @@ const Blog = () => {
         <button className={styles.nextBtn} style={{ display: `${pageNumber === 0 ? 'none' : 'block'}` }} onClick={prevPage}>
           Previous
         </button>
-        <button className={styles.nextBtn} onClick={nextPage}>
+        <button className={styles.nextBtn} onClick={nextPage} style={{ display: `${blogs.length < 5 ? 'none' : 'block'}` }}>
           Next
         </button>
       </div>
