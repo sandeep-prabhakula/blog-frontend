@@ -6,7 +6,6 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const[currentUser,setCurrentUser] = useState({})
     const router = useRouter()
     const login = async (e) => {
         e.preventDefault()
@@ -28,7 +27,6 @@ const Login = () => {
                 }
             })
             const data = await res.json()
-            setCurrentUser(data)
             window.sessionStorage.setItem('currentUser', JSON.stringify(data))
             router.push(`/comments?uid=${data.id}`)
         }
