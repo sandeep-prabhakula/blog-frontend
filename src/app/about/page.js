@@ -14,7 +14,7 @@ const about = () => {
           className={styles.img}
         />
         <div className={styles.imgText}>
-          <h1 className={styles.imgTitle}>Tech Talk Central</h1>
+          <h1 className={styles.imgTitle}>Codeverse Chronicles</h1>
           <h2 className={styles.imgDesc}>
             Where Innovation Meets Coding Excellence
           </h2>
