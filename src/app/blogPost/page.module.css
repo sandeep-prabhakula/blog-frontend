@@ -8,7 +8,12 @@
     border-radius: 15px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
   }
-
+.dummyContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
   .image{
     object-fit: cover;
     max-width: 100%;
@@ -20,6 +25,13 @@
     margin-bottom: 10px;
   }
   
+  .pageTitle {
+    font-size: 64px;
+    background: linear-gradient(to bottom, #194c33, #bbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .desc{
     font-size: 18px;
     color: #000;

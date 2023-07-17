@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Loader from '@/components/loader/Loader'
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css'
@@ -7,11 +8,13 @@ import styles from './page.module.css'
 const Blog = () => {
   const [blogs, setBlogs] = useState([])
   const [pageNumber, setPageNumber] = useState(0)
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data)
+        setLoading(false)
       }
       );
   }, [pageNumber])
@@ -22,9 +25,13 @@ const Blog = () => {
   const prevPage = async () => {
     setPageNumber(prevActiveStep => prevActiveStep - 1)
   }
-  if (blogs.length === 0) return <h3 className={styles.desc}>No blogs found</h3>
+  if (blogs.length === 0 && !loading) return <h3 className={styles.desc}>No blogs found</h3>
+  if (loading) return <div className={styles.dummyContainer}>
+    <Loader/>
+  </div>
   return (
     <div className={styles.mainContainer}>
+      <h1 className={styles.pageTitle}>Blogs</h1>
       {blogs.map((item) => (
         <Link href={`/blogPost/${item.id}`} className={styles.container} key={item.id}>
           <div className={styles.imageContainer}>
