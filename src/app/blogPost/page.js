@@ -27,11 +27,13 @@ const Blog = () => {
   }
   if (blogs.length === 0 && !loading) return <h3 className={styles.desc}>No blogs found</h3>
   if (loading) return <div className={styles.dummyContainer}>
-    <Loader/>
+    <Loader />
   </div>
   return (
     <div className={styles.mainContainer}>
-      <h1 className={styles.pageTitle}>Blogs</h1>
+      <div className={styles.titleDiv}>
+        <h1 className={styles.pageTitle}>Blogs</h1>
+      </div>
       {blogs.map((item) => (
         <Link href={`/blogPost/${item.id}`} className={styles.container} key={item.id}>
           <div className={styles.imageContainer}>
