@@ -10,6 +10,10 @@ const Blog = () => {
   const [pageNumber, setPageNumber] = useState(0)
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    //testing 
+    // fetch(`/dummy.json`)
+    
+    //production
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
       .then((res) => res.json())
       .then((data) => {

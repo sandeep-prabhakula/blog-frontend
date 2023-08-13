@@ -8,16 +8,27 @@ async function getData(id) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/${id}`, {
     cache: "no-store",
   });
-
+  
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-
   return res.json();
 }
 
-export async function generateMetadata({ params }) {
+async function test(id){
+  const res = await fetch(`http://localhost:3000/dummy.json`, {
+    cache: "no-store",
+  })
+  const data = await res.json()
+  const obj = data[id-1]
+  return obj
+}
 
+export async function generateMetadata({ params }) {
+  //testing
+  // const post =await test(params.id)
+
+  //production
   const post = await getData(params.id)
   return {
     title: post.title,
@@ -37,7 +48,15 @@ export async function generateMetadata({ params }) {
 
 const Blog = async ({ params }) => {
   let key = 0
+
+  //production
   const data = await getData(params.id)
+
+  //testing
+  // const data =await test(params.id)
+
+  
+  const regexLabel = /\`{3}([\s\S]*)\`{3}/g
   return (
     <div className={styles.container}>
       <Head>
@@ -90,6 +109,9 @@ const Blog = async ({ params }) => {
         </div>
         {data.description.split('\n\n').map((paragraph) => {
           if (paragraph.endsWith(":")) return <h3>{paragraph}<br /></h3>
+          // if (paragraph.startsWith('```'))return (
+          //   <pre>{regexLabel.exec(paragraph)}</pre>
+          // )
           return <p className={styles.text} key={key++}>{paragraph}<br /></p>
         })}
       </div>

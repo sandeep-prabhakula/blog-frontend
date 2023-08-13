@@ -2,11 +2,16 @@ import React from 'react'
 import styles from './page.module.css'
 
 const getData = async(id)=>{
-    const ids = id.split("-")
-    const commentID = ids[0]
-    const uid = ids[1];
-    
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comment/${commentID}/${uid}`)
+        
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/comment/${id}`,{
+      method:"GET",
+      headers:{
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+        'Access-Control-Allow-Origin': "*",
+        'Access-Control-Allow-Methods': 'GET'
+      }
+    })
     return res.json()
 }
 

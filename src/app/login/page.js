@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
+
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -19,7 +20,7 @@ const Login = () => {
                 'email': email,
                 'password': password
             }
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/authenticate`, {
                 method: 'POST',
                 body: JSON.stringify(payload),
                 headers: {
@@ -28,7 +29,7 @@ const Login = () => {
             })
             const data = await res.json()
             window.sessionStorage.setItem('currentUser', JSON.stringify(data))
-            router.push(`/comments?uid=${data.id}`)
+            router.push(`/comments`)
         }
     }
 

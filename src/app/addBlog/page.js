@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
+
 const AddBlog = () => {
     const router = useRouter()
     const [title, setTitle] = useState("")
@@ -15,7 +16,7 @@ const AddBlog = () => {
             router.push('/login')
         } else {
             const temp = JSON.parse(window.sessionStorage.getItem('currentUser'))
-            setUid(temp.id)
+            setUid(temp.jwtToken)
         }
     }, [])
     const onTitleChanged = (e) => {
@@ -42,11 +43,14 @@ const AddBlog = () => {
             "description": desc
         }
         e.preventDefault()
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-blog/${uid}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-blog`, {
             method: 'POST',
             body: JSON.stringify(payload),
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${uid}`,
+                'Access-Control-Allow-Origin':"*",
+                'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
             }
         })
     }
