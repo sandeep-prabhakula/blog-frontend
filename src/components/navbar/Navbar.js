@@ -19,11 +19,11 @@ const links = [
     title: "Blogs",
     url: "/blogPost",
   },
-  // {
-  //   id: 4,
-  //   title: "Tutorials",
-  //   url: "/tutorials",
-  // },
+  {
+    id: 4,
+    title: "Tutorials",
+    url: "/tutorials",
+  },
 
 ];
 const Navbar = () => {

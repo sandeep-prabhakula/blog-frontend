@@ -1,12 +1,33 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
-.image{
+
+.image {
     object-fit: cover;
     max-width: 100%;
     height: auto;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 1rem;
+    margin: 2rem;
+    border: 2px solid rgb(9, 105, 69);
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+}
+.courses{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
