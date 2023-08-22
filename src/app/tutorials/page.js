@@ -3,43 +3,56 @@ import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-
+import Button from '@/components/button/Button'
 const Tutorials = () => {
     const tutorials = [
         {
             id: 1,
             language: 'Java',
-            image: `/java.png`
+            image: `/images/java.svg`,
+            url:`https://docs.oracle.com/en/java/`
         },
         {
             id: 2,
             language: 'Kotlin',
-            image: `/kotlin.png`
+            image: `/images/kotlin.svg`,
+            url:`https://play.kotlinlang.org/byExample/overview`
         },
         {
             id: 3,
-            language: 'Spring Boot',
-            image: `/spring-boot.png`
+            language: 'Spring',
+            image: `/images/spring.svg`,
+            url:`https://docs.spring.io/spring-framework/reference/index.html`
         },
         {
             id: 4,
             language: 'ReactJs',
-            image: `/reactjs.png`
+            image: `/images/reactjs.svg`,
+            url:`https://react.dev/`
         },
         {
             id: 5,
             language: 'Javascript',
-            image: `/js.png`
+            image: `/images/js.svg`,
+            url:`https://developer.mozilla.org/en-US/docs/Web/JavaScript`
         },
         {
             id: 6,
             language: "Android",
-            image: `/android.png`
+            image: `/images/android.svg`,
+            url:`https://developer.android.com/guide/components/fundamentals`
         },
         {
             id: 7,
             language: 'MySQL',
-            image: `/mysql.png`
+            image: `/images/mysql.svg`,
+            url:`https://sqlbolt.com/`
+        },
+        {
+            id: 8,
+            language: 'solidity',
+            image: `/images/solidity.svg`,
+            url:`https://docs.soliditylang.org/en/v0.8.21/`
         }
     ]
     const [courses, setCourses] = useState([])
@@ -55,19 +68,17 @@ const Tutorials = () => {
             <div className={styles.courses}>
                 {
                     courses.map((item) => {
-                        return <Link href={`/`} key={item.id}>
-                            <div className={styles.card}>
+                        return <div className={styles.card} key={item.id}>
                                 <Image
                                     src={item.image}
                                     alt={item.language}
-                                    width = {200}
-                                    height = {200}
+                                    width = {96}
+                                    height = {96}
                                 />
-                                <h3>{item.language}</h3>
-
+                                <h3>{item.language} Tutorial</h3>
+                                <Button text={`Start Learning`} url={item.url}/>
                             </div>
 
-                        </Link>
                     })
                 }
             </div>

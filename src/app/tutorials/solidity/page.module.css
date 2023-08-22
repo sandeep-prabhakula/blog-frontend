@@ -1,0 +1,44 @@
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  /* Define media query for different screen sizes */
+  @media (min-width: 576px) {
+    /* Adjust container width for small devices */
+    .container {
+      max-width: 540px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    /* Adjust container width for medium devices */
+    .container {
+      max-width: 720px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    /* Adjust container width for large devices */
+    .container {
+      max-width: 960px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    /* Adjust container width for extra-large devices */
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+
+
+  .title {
+    font-size: 64px;
+    background: linear-gradient(to bottom, #194c33, #bbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }

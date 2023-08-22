@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Button = ({ text, url }) => {
   return (
-    <Link href={url}>
+    <Link href={url} target="_blank">
       <button className={styles.container}>{text}</button>
     </Link>
   );
