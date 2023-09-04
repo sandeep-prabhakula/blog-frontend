@@ -5,12 +5,16 @@ import { useRouter } from 'next/navigation'
 
 const AddBlog = () => {
     const router = useRouter()
-    const [title, setTitle] = useState("")
-    const [imageURL, setImageURL] = useState('')
-    const [date, setDate] = useState('')
-    const [desc, setDesc] = useState('')
-    const [code, setCode] = useState('')
+
     const [uid, setUid] = useState('')
+
+    const [blog,setBlog] = useState({
+        title:"",
+        description:"",
+        postedAt:"",
+        code:"",
+        image:"",
+    })
     useEffect(() => {
         if (!window.sessionStorage.getItem('currentUser')) {
             router.push('/login')
@@ -19,29 +23,17 @@ const AddBlog = () => {
             setUid(temp.jwtToken)
         }
     }, [])
-    const onTitleChanged = (e) => {
-        setTitle(e.target.value)
+    
+    
+    const handleChange = (e)=>{
+        setBlog((prev)=>({
+            ...prev,
+            [e.target.name]:e.target.value
+        }))
     }
-    const onDescChange = (e) => {
-        setDesc(e.target.value)
-    }
-    const onImageURLChange = (e) => {
-        setImageURL(e.target.value)
-    }
-    const onCodeChange = (e) => {
-        setCode(e.target.value)
-    }
-    const onDateChange = (e) => {
-        setDate(e.target.value)
-    }
+
     const addNewBLog = async (e) => {
-        const payload = {
-            "title": title,
-            "postedAt": date,
-            "image": imageURL,
-            "code": code,
-            "description": desc
-        }
+        const payload = blog
         e.preventDefault()
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-blog`, {
             method: 'POST',
@@ -58,16 +50,17 @@ const AddBlog = () => {
         <div className={styles.container}>
             <h1 className={styles.title}>Add new blog</h1>
             <form className={styles.form}>
-                <input type="text" placeholder="title" className={styles.input} required onChange={onTitleChanged} />
-                <input type="text" placeholder="imageURL" className={styles.input} required onChange={onImageURLChange} />
-                <input type="date" placeholder="dd-mm-yyyy" className={styles.input} required onChange={onDateChange} />
+                <input type="text" placeholder="title" className={styles.input} required onChange={handleChange} name='title'/>
+                <input type="text" placeholder="imageURL" className={styles.input} required onChange={handleChange} name='image'/>
+                <input type="date" placeholder="dd-mm-yyyy" className={styles.input} required onChange={handleChange} name='postedAt'/>
                 <textarea
                     className={styles.textArea}
                     placeholder="description"
                     cols="30"
                     rows="10"
                     required
-                    onChange={onDescChange}
+                    onChange={handleChange}
+                    name='description'
                 ></textarea>
 
                 <textarea
@@ -75,7 +68,8 @@ const AddBlog = () => {
                     placeholder="code"
                     cols="30"
                     rows="10"
-                    onChange={onCodeChange}
+                    onChange={handleChange}
+                    name = 'code'
                 ></textarea>
                 <button className={styles.submitBtn} onClick={addNewBLog}>Send</button>
             </form>

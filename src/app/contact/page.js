@@ -4,31 +4,46 @@ import styles from "./page.module.css";
 import Image from "next/image";
 
 const Contact = () => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
+  // const [name, setName] = useState("")
+  // const [email, setEmail] = useState('')
+  // const [message, setMessage] = useState('')
+
+  const [comment,setComment] = useState({
+    name:'',
+    email:'',
+    message:''
+  })
+
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('')
-  const onNameChange = (e) => {
-    setName(e.target.value)
-  }
-  const onEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
-  const onMessageChange = (e) => {
-    setMessage(e.target.value)
+  // const onNameChange = (e) => {
+  //   setName(e.target.value)
+  // }
+  // const onEmailChange = (e) => {
+  //   setEmail(e.target.value)
+  // }
+  // const onMessageChange = (e) => {
+  //   setMessage(e.target.value)
+  // }
+  const handleChange = (e)=>{
+    setComment(prev=>({
+      ...prev,
+      [e.target.name]:e.target.value
+    }))
   }
   const onSubmit = (e) => {
     e.preventDefault()
-    const data = {
-      'name': name,
-      'email': email,
-      'message': message
-    }
-    if (name === '' || email === '' || message === '') {
+    // const data = {
+    //   'name': name,
+    //   'email': email,
+    //   'message': message
+    // }
+    const data = comment
+
+    if (data.name === '' || data.email === '' || data.message === '') {
       setSuccess('')
       setError('Empty Credentials')
-    } else if (!email.includes("@")) {
+    } else if (!data.email.includes("@")) {
       setSuccess('')
       setError('Provide a valid email')
     }
@@ -41,9 +56,6 @@ const Contact = () => {
       }).then(() => {
         setError('')
         setSuccess('Message Sent :-)')
-        setName('')
-        setEmail('')
-        setMessage('')
       }).catch(() => {
         setSuccess('')
         setError('something went wrong!!');
@@ -66,15 +78,15 @@ const Contact = () => {
         <form className={styles.form}>
           {success && <small className={styles.success}>{success}</small>}
           {error && <small className={styles.error}>{error}</small>}
-          <input type="text" placeholder="name" className={styles.input} onChange={onNameChange} required/>
-          <input type="email" placeholder="email" className={styles.input} onChange={onEmailChange} required/>
+          <input type="text" placeholder="name" className={styles.input} onChange={handleChange} required name="name"/>
+          <input type="email" placeholder="email" className={styles.input} onChange={handleChange} required name="email"/>
           <textarea
             className={styles.textArea}
             placeholder="message"
             cols="30"
             rows="10"
-            onChange={onMessageChange}
-          ></textarea>
+            onChange={handleChange}
+           name="message"></textarea>
           <button className={styles.submitBtn} onClick={onSubmit}>Send</button>
         </form>
       </div>
