@@ -40,7 +40,7 @@ const Footer = () => {
             <div className={styles.socialProfiles}>
 
                 {links.map((item)=>{
-                    return <Link  href={item.url} target='_blank'>
+                    return <Link  href={item.url} target='_blank' key={item.id}>
                     <Image src={item.image}
                     height={24}
                     alt={item.url}
