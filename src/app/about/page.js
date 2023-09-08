@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import Button from "../../components/button/Button"
 
 const about = () => {
   return (
@@ -38,7 +37,7 @@ const about = () => {
             <br />
             I realise how critical it is to stay ahead in this continuously changing digital world. That is why my blog is your one-stop shop for all things technological. I offer something for everyone, whether you&apos;re a seasoned professional or an inquisitive novice. Meticulously prepared articles take deep dives into a variety of tech fields, including detailed explanations, tutorials, and real-world applications.
           </p>
-          <Button url="/contact" text="Contact" />
+          
         </div>
       </div>
     </div>

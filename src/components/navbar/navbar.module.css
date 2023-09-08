@@ -22,11 +22,9 @@
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+  margin: 10px;
 }
 .link:hover{
-  padding:1rem;
-  background: linear-gradient(to bottom, #194c33, #bbb);
-  border-radius: 15px;
-  transition: all .4s ease-in-out;
-  box-shadow:2px 4px #706969 ;
+  font-weight: bold;
+  transition: all .4s ease-in-out ;
 }

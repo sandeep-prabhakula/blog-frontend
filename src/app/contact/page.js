@@ -4,9 +4,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 
 const Contact = () => {
-  // const [name, setName] = useState("")
-  // const [email, setEmail] = useState('')
-  // const [message, setMessage] = useState('')
+  
 
   const [comment,setComment] = useState({
     name:'',
@@ -16,15 +14,7 @@ const Contact = () => {
 
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('')
-  // const onNameChange = (e) => {
-  //   setName(e.target.value)
-  // }
-  // const onEmailChange = (e) => {
-  //   setEmail(e.target.value)
-  // }
-  // const onMessageChange = (e) => {
-  //   setMessage(e.target.value)
-  // }
+  
   const handleChange = (e)=>{
     setComment(prev=>({
       ...prev,
@@ -33,11 +23,6 @@ const Contact = () => {
   }
   const onSubmit = (e) => {
     e.preventDefault()
-    // const data = {
-    //   'name': name,
-    //   'email': email,
-    //   'message': message
-    // }
     const data = comment
 
     if (data.name === '' || data.email === '' || data.message === '') {

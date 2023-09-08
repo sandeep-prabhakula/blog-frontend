@@ -24,7 +24,12 @@ const links = [
     title: "Tutorials",
     url: "/tutorials",
   },
-
+  {
+    id: 5,
+    title: "Contact",
+    url: "/contact",
+  },
+  
 ];
 const Navbar = () => {
   return (

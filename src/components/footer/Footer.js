@@ -2,6 +2,34 @@ import React from 'react'
 import styles from './footer.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+const links = [
+    {
+      id: 1,
+      image: "./images/instagram.svg",
+      url: "https://instagram.com/sandyo9o7",
+    },
+    {
+      id: 2,
+      image: "./images/twitter.svg",
+      url: "https://twitter.com/SandeepSandy_o9",
+    },
+    {
+      id: 3,
+      image: "./images/linkedin.svg",
+      url: "https://linkedin.com/in/sandeep-prabhakula",
+    },
+    {
+      id: 4,
+      image: "./images/github.svg",
+      url: "https://github.com/sandeep-prabhakula",
+    },
+    {
+      id: 5,
+      image: "./images/facebook.svg",
+      url: "https://facebook.com/sandeep.prabhakula",
+    },
+    
+  ];
 const Footer = () => {
     return (
         <div className={styles.container}>
@@ -10,39 +38,15 @@ const Footer = () => {
                 <small className={styles.copyright}>&copy;Copyright 2023 Codeverse Chronicles</small>
             </div>
             <div className={styles.socialProfiles}>
-                <ul>
-                    <li><Link  href={`https://instagram.com/sandyo9o7`} target='_blank'>
-                        <Image src='/images/instagram.svg'
-                            height={24}
-                            alt='instagram'
-                            width={24} />
-                    </Link></li>
-                    <li><Link  href={`https://twitter.com/SandeepSandy_o9`} target='_blank'>
-                        <Image src='/images/twitter.svg'
-                        height={24}
-                        alt='twitter'
-                        width={24} />
-                        </Link></li>
-                    <li><Link  href={`https://linkedin.com/in/sandeep-prabhakula`} target='_blank'>
-                        <Image src='/images/linkedin.svg'
-                        height={24}
-                        alt='linkedin'
-                        width={24} />
-                        </Link></li>
-                    <li><Link  href={`https://github.com/sandeep-prabhakula`} target='_blank'>
-                        <Image src='/images/github.svg'
-                        height={24}
-                        alt='github'
-                        width={24} />
-                        </Link></li>
-                    <li><Link  href={`https://facebook.com/sandeep.prabhakula`} target='_blank'>
-                        <Image
-                        src='/images/facebook.svg'
-                        alt='facebook'
-                        height={24}
-                        width={24} />
-                        </Link></li>
-                </ul>
+
+                {links.map((item)=>{
+                    return <Link  href={item.url} target='_blank'>
+                    <Image src={item.image}
+                    height={24}
+                    alt={item.url}
+                    width={24} />
+                    </Link>
+                })}
             </div>
         </div>
     )

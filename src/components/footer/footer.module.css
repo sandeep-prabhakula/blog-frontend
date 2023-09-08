@@ -16,19 +16,17 @@
     margin:0.5rem;
     padding: 0.5rem;
 }
-.socialProfiles ul{
+.socialProfiles{
     display: flex;
     flex-direction: row;
-}
-.socialProfiles ul li{
-    list-style: none;
-    padding: 0.5rem;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 15px;
 }
 @media (max-width:701px) {
     .container{
         display: flex;
         flex-direction: column;
-        /* padding: 1rem; */
     }
     .heading{
         display: flex;
@@ -37,13 +35,7 @@
     .copyright{
         border-left: 0px;   
     }
-    .socialProfiles ul li{
-        
-        padding: 0.25rem;
-    }
-    .socialProfiles ul{
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
+    .socialProfiles{
+        gap: 8px;
     }
 }
