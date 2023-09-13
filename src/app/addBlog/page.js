@@ -2,7 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
+import localFont from 'next/font/local'
 
+const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const AddBlog = () => {
     const router = useRouter()
 
@@ -48,7 +50,7 @@ const AddBlog = () => {
     }
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Add new blog</h1>
+            <h1 className={`${styles.title} ${imgTitleFont.className}`}>Add new blog</h1>
             <form className={styles.form}>
                 <input type="text" placeholder="title" className={styles.input} required onChange={handleChange} name='title'/>
                 <input type="text" placeholder="imageURL" className={styles.input} required onChange={handleChange} name='image'/>

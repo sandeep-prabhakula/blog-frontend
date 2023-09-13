@@ -4,7 +4,9 @@ import Loader from '@/components/loader/Loader'
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css'
+import localFont from 'next/font/local'
 
+const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const Blog = () => {
   const [blogs, setBlogs] = useState([])
   const [pageNumber, setPageNumber] = useState(0)
@@ -36,7 +38,7 @@ const Blog = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleDiv}>
-        <h1 className={styles.pageTitle}>Blogs</h1>
+        <h1 className={`${styles.pageTitle} ${imgTitleFont.className}`}>Blogs</h1>
       </div>
       {blogs.map((item) => (
         <Link href={`/blogPost/${item.id}`} className={styles.container} key={item.id}>

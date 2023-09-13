@@ -43,3 +43,9 @@
   font-weight: 300;
 }
 
+@media (max-width:701px) {
+    .title{
+      font-size: 44px;
+    }
+}
+

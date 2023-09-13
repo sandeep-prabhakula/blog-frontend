@@ -4,6 +4,10 @@ import styles from './page.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/button/Button'
+import localFont from 'next/font/local'
+
+const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
+const courseTitleFont = localFont({ src: '../../fonts/Azedo-Bold.otf'})
 const Tutorials = () => {
     const tutorials = [
         {
@@ -63,7 +67,7 @@ const Tutorials = () => {
     return (
         <div className={styles.container}>
 
-            <h1 className={styles.title}>Tutorials</h1>
+            <h1 className={`${styles.title} ${imgTitleFont.className}`}>Tutorials</h1>
 
             <div className={styles.courses}>
                 {
@@ -75,7 +79,7 @@ const Tutorials = () => {
                                     width = {96}
                                     height = {96}
                                 />
-                                <h3>{item.language} Tutorial</h3>
+                                <h3 className={courseTitleFont.className}>{item.language}</h3>
                                 <Button text={`Start Learning`} url={item.url}/>
                             </div>
 

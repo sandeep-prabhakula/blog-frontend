@@ -2,7 +2,9 @@
 import React, { useState } from 'react'
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
+import localFont from 'next/font/local'
 
+const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -41,7 +43,7 @@ const Login = () => {
     }
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Sign in</h1>
+            <h1 className={`${styles.title} ${imgTitleFont.className}`}>Sign in</h1>
             <form className={styles.form}>
 
                 {error && <small className={styles.error}>{error}</small>}
