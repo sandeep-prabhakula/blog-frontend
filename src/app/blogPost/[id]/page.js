@@ -3,7 +3,10 @@ import Image from 'next/image';
 import styles from './page.module.css'
 import Head from 'next/head';
 import Link from 'next/link';
-
+import localFont from 'next/font/local'
+const blogTitleFont = localFont({ src: "../../../fonts/BebasNeue-Regular.otf"})
+const aboutAuthorFont = localFont({ src: "../../../fonts/NexaExtraLight.ttf"})
+const descriptionFont = localFont({ src: "../../../fonts/OpenSans.ttf"})
 async function getData(id) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/${id}`, {
     cache: "no-store",
@@ -78,7 +81,7 @@ const Blog = async ({ params }) => {
 
 
       </Head>
-      <div className={styles.path}>
+      <div className={`${styles.path} ${aboutAuthorFont.className}`}>
         <Link href='/'>
           <small>Codeverse Chronicles &gt; </small>
         </Link>
@@ -89,8 +92,8 @@ const Blog = async ({ params }) => {
       </div>
       <div className={styles.top}>
         <div className={styles.info}>
-          <h1 className={styles.title}>{data.title}</h1>
-          <div className={styles.author}>
+          <h1 className={`${styles.title} ${blogTitleFont.className}`}>{data.title}</h1>
+          <div className={`${styles.author} ${aboutAuthorFont.className}`}>
             <small className={styles.username}>Author : Sandeep Prabhakula | Published on: {data.postedAt}</small>
           </div>
 
@@ -108,11 +111,11 @@ const Blog = async ({ params }) => {
           />
         </div>
         {data.description.split('\n\n').map((paragraph) => {
-          if (paragraph.endsWith(":")) return <h3>{paragraph}<br /></h3>
+          if (paragraph.endsWith(":")) return <h3 className={`${blogTitleFont.className}`}>{paragraph}<br /></h3>
           // if (paragraph.startsWith('```'))return (
           //   <pre>{regexLabel.exec(paragraph)}</pre>
           // )
-          return <p className={styles.text} key={key++}>{paragraph}<br /></p>
+          return <p className={`${styles.text} ${descriptionFont.className}`} key={key++}>{paragraph}<br /></p>
         })}
       </div>
     </div>

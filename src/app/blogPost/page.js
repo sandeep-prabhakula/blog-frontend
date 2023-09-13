@@ -7,6 +7,8 @@ import styles from './page.module.css'
 import localFont from 'next/font/local'
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
+const blogTitleFont = localFont({ src: "../../fonts/Corbert Condensed Black.otf"})
+const blogDescriptionFont = localFont({ src:"../../fonts/NexaExtraLight.ttf"})
 const Blog = () => {
   const [blogs, setBlogs] = useState([])
   const [pageNumber, setPageNumber] = useState(0)
@@ -52,8 +54,8 @@ const Blog = () => {
             />
           </div>
           <div className={styles.content}>
-            <h1 className={styles.title}>{item.title}</h1>
-            <p className={styles.desc}>{item.description.substring(0, 125)}</p>
+            <h1 className={`${styles.title} ${blogTitleFont.className}`}>{item.title}</h1>
+            <p className={`${styles.desc} ${blogDescriptionFont.className}`}>{item.description.substring(0, 125)}</p>
           </div>
         </Link>
       ))}
