@@ -4,26 +4,26 @@ import styles from './page.module.css'
 import Head from 'next/head';
 import Link from 'next/link';
 import localFont from 'next/font/local'
-const blogTitleFont = localFont({ src: "../../../fonts/BebasNeue-Regular.otf"})
-const aboutAuthorFont = localFont({ src: "../../../fonts/NexaExtraLight.ttf"})
-const descriptionFont = localFont({ src: "../../../fonts/OpenSans.ttf"})
+const blogTitleFont = localFont({ src: "../../../fonts/BebasNeue-Regular.otf" })
+const aboutAuthorFont = localFont({ src: "../../../fonts/NexaExtraLight.ttf" })
+const descriptionFont = localFont({ src: "../../../fonts/OpenSans.ttf" })
 async function getData(id) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/${id}`, {
     cache: "no-store",
   });
-  
+
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
   return res.json();
 }
 
-async function test(id){
+async function test(id) {
   const res = await fetch(`http://localhost:3000/dummy.json`, {
     cache: "no-store",
   })
   const data = await res.json()
-  const obj = data[id-1]
+  const obj = data[id - 1]
   return obj
 }
 
@@ -42,8 +42,8 @@ export async function generateMetadata({ params }) {
         width: 300,
         height: 200
       }],
-      title:post.title,
-      description:post.description,
+      title: post.title,
+      description: post.description,
     },
     keywords: post.title.split(' ')
   };
@@ -58,7 +58,7 @@ const Blog = async ({ params }) => {
   //testing
   // const data =await test(params.id)
 
-  
+
   const regexLabel = /\`{3}([\s\S]*)\`{3}/g
   return (
     <div className={styles.container}>
@@ -111,10 +111,24 @@ const Blog = async ({ params }) => {
           />
         </div>
         {data.description.split('\n\n').map((paragraph) => {
+
+          // Heading
           if (paragraph.endsWith(":")) return <h3 className={`${blogTitleFont.className}`}>{paragraph}<br /></h3>
-          // if (paragraph.startsWith('```'))return (
-          //   <pre>{regexLabel.exec(paragraph)}</pre>
-          // )
+
+          // Code
+          if(paragraph.startsWith("```"))return <pre>
+            {paragraph.slice(3,-3)}
+          </pre>
+
+          // Images
+          if (paragraph.startsWith("[")) return <Image
+            src={paragraph.slice(1, -1)}
+            alt=""
+            width={500}
+            height={400}
+          />
+
+          // Description
           return <p className={`${styles.text} ${descriptionFont.className}`} key={key++}>{paragraph}<br /></p>
         })}
       </div>
