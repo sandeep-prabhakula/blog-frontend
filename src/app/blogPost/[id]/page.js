@@ -4,6 +4,7 @@ import styles from './page.module.css'
 import Head from 'next/head';
 import Link from 'next/link';
 import localFont from 'next/font/local'
+import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
 const blogTitleFont = localFont({ src: "../../../fonts/BebasNeue-Regular.otf" })
 const aboutAuthorFont = localFont({ src: "../../../fonts/NexaExtraLight.ttf" })
 const descriptionFont = localFont({ src: "../../../fonts/OpenSans.ttf" })
@@ -116,17 +117,19 @@ const Blog = async ({ params }) => {
           if (paragraph.endsWith(":")) return <h3 className={`${blogTitleFont.className}`}>{paragraph}<br /></h3>
 
           // Code
-          if(paragraph.startsWith("```"))return <pre>
-            {paragraph.slice(3,-3)}
-          </pre>
+          if (paragraph.startsWith("```")) return <SyntaxHighlighter>
+            {paragraph.slice(3, -3)}
+          </SyntaxHighlighter>
 
           // Images
-          if (paragraph.startsWith("[")) return <Image
-            src={paragraph.slice(1, -1)}
-            alt=""
-            width={500}
-            height={400}
-          />
+          if (paragraph.startsWith("[")) return <div>
+            <Image
+              src={paragraph.slice(1, -1)}
+              alt=""
+              width={500}
+              height={400}
+            />
+          </div>
 
           // Description
           return <p className={`${styles.text} ${descriptionFont.className}`} key={key++}>{paragraph}<br /></p>
