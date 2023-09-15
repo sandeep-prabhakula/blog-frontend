@@ -5,9 +5,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import localFont from 'next/font/local'
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
+
+
 const blogTitleFont = localFont({ src: "../../../fonts/BebasNeue-Regular.otf" })
 const aboutAuthorFont = localFont({ src: "../../../fonts/NexaExtraLight.ttf" })
 const descriptionFont = localFont({ src: "../../../fonts/OpenSans.ttf" })
+
+
 async function getData(id) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/${id}`, {
     cache: "no-store",
@@ -60,7 +64,6 @@ const Blog = async ({ params }) => {
   // const data =await test(params.id)
 
 
-  const regexLabel = /\`{3}([\s\S]*)\`{3}/g
   return (
     <div className={styles.container}>
       <Head>
