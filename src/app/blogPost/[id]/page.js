@@ -114,6 +114,7 @@ const Blog = async ({ params }) => {
             className={styles.image}
           />
         </div>
+        <div className={styles.content}>
         {data.description.split('\n\n').map((paragraph) => {
 
           // Heading
@@ -137,6 +138,7 @@ const Blog = async ({ params }) => {
           // Description
           return <p className={`${styles.text} ${descriptionFont.className}`} key={key++}>{paragraph}<br /></p>
         })}
+        </div>
       </div>
     </div>
   )
