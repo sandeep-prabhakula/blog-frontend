@@ -1,0 +1,90 @@
+.title {
+    font-size: 64px;
+    background: linear-gradient(to bottom, #194c33, #bbb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+.form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .loginBtn{
+    padding: 20px;
+    cursor: pointer;
+    background-color: #53c28b;
+    border: none;
+    border-radius: 25px;
+    width: max-content;
+    color: white;
+  }
+
+  .input{
+  padding: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #bbb;
+  border-radius: 10px;
+  border: 3px solid #bbb;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    border-radius: 10px;
+  }
+
+  /* Define media query for different screen sizes */
+  @media (min-width: 576px) {
+    /* Adjust container width for small devices */
+    .container {
+      max-width: 540px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    /* Adjust container width for medium devices */
+    .container {
+      max-width: 720px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    /* Adjust container width for large devices */
+    .container {
+      max-width: 960px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    /* Adjust container width for extra-large devices */
+    .container {
+      max-width: 1140px;
+    }
+  }
+  
