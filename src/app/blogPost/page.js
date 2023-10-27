@@ -7,8 +7,8 @@ import styles from './page.module.css'
 import localFont from 'next/font/local'
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
-const blogTitleFont = localFont({ src: "../../fonts/Corbert Condensed Black.otf"})
-const blogDescriptionFont = localFont({ src:"../../fonts/NexaExtraLight.ttf"})
+const blogTitleFont = localFont({ src: "../../fonts/Corbert Condensed Black.otf" })
+const blogDescriptionFont = localFont({ src: "../../fonts/NexaExtraLight.ttf" })
 const Blog = () => {
   const [blogs, setBlogs] = useState([])
   const [pageNumber, setPageNumber] = useState(0)
@@ -16,7 +16,7 @@ const Blog = () => {
   useEffect(() => {
     //testing 
     // fetch(`/dummy.json`)
-    
+
     //production
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
       .then((res) => res.json())
@@ -28,13 +28,14 @@ const Blog = () => {
   }, [pageNumber])
 
   const nextPage = async () => {
+    setBlogs([])
     setPageNumber(prevActiveStep => prevActiveStep + 1)
   }
   const prevPage = async () => {
+    setBlogs([])
     setPageNumber(prevActiveStep => prevActiveStep - 1)
   }
-  if (blogs.length === 0 && !loading) return <h3 className={styles.desc}>No blogs found</h3>
-  if (loading) return <div className={styles.dummyContainer}>
+  if (blogs.length === 0 || loading) return <div className={styles.dummyContainer}>
     <Loader />
   </div>
   return (
