@@ -18,13 +18,24 @@ const Blog = () => {
     // fetch(`/dummy.json`)
 
     //production
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
-      .then((res) => res.json())
-      .then((data) => {
+    // fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setBlogs(data)
+    //     setLoading(false)
+    //   }
+    //   );
+    async function fetchBlogs(){
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
+        const data = await res.json()
         setBlogs(data)
         setLoading(false)
+      } catch (error) {
+        console.log(error)
       }
-      );
+    }
+    fetchBlogs()
   }, [pageNumber])
 
   const nextPage = async () => {

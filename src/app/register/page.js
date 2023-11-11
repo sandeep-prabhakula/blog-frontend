@@ -73,7 +73,7 @@ const Register = () => {
           <input type="password" placeholder="confirm password" className={styles.input} onChange={confirmPasswordHandler} name='password' required />
         </form>
         <button className={styles.loginBtn} onClick={register} type='submit'>Register</button>
-        <Link href={`/login`}>
+        <Link href={`/login`} className={`${styles.toLoginPage}`}>
         Already a user ? Login
         </Link>
       </div>

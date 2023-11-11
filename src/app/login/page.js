@@ -53,7 +53,7 @@ const Login = () => {
                 <input type="password" placeholder="password" className={styles.input} onChange={handleChange} name='password'/>
             </form>
             <button className={styles.loginBtn} onClick={login}>Login</button>
-            <Link href={`/register`}>New User? SignUp</Link>
+            <Link href={`/register`} className={`${styles.toSignupPage}`}>New User? SignUp</Link>
         </div>
     )
 }

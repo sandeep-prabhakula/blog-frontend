@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&family=Ubuntu&display=swap');
 .container {}
 
 .imgContainer {
@@ -40,4 +41,5 @@
   font-size: 18px;
   font-weight: 300;
   text-align: justify;
+  font-family: Ubuntu;
 }

@@ -10,12 +10,14 @@ const AddBlog = () => {
 
     const [uid, setUid] = useState('')
 
-    const [blog,setBlog] = useState({
-        title:"",
-        description:"",
-        postedAt:"",
-        code:"",
-        image:"",
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('')
+
+    const [blog, setBlog] = useState({
+        title: "",
+        description: "",
+        postedAt: "",
+        image: "",
     })
     useEffect(() => {
         if (!window.sessionStorage.getItem('currentUser')) {
@@ -25,36 +27,51 @@ const AddBlog = () => {
             setUid(temp.jwtToken)
         }
     }, [])
-    
-    
-    const handleChange = (e)=>{
-        setBlog((prev)=>({
+
+
+    const handleChange = (e) => {
+        setBlog((prev) => ({
             ...prev,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         }))
     }
 
     const addNewBLog = async (e) => {
+        setError('')
+        setSuccess('')
         const payload = blog
         e.preventDefault()
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-blog`, {
-            method: 'POST',
-            body: JSON.stringify(payload),
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${uid}`,
-                'Access-Control-Allow-Origin':"*",
-                'Access-Control-Allow-Methods':'POST,PATCH,OPTIONS'
+        if (payload.title !== '' && payload.description !== "" && payload.postedAt !== '' && payload.image !== '') {
+            try {
+
+                await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-blog`, {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${uid}`,
+                        'Access-Control-Allow-Origin': "*",
+                        'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
+                    }
+                })
+                setSuccess('Blog Posted Successfully')
+            } catch (error) {
+                setError('Something went Wrong')
             }
-        })
+        }else {
+            setError('All fields are mandatory')
+        }
+
     }
     return (
         <div className={styles.container}>
             <h1 className={`${styles.title} ${imgTitleFont.className}`}>Add new blog</h1>
+            {success && <small className={styles.success}>{success}</small>}
+            {error && <small className={styles.error}>{error}</small>}
             <form className={styles.form}>
-                <input type="text" placeholder="title" className={styles.input} required onChange={handleChange} name='title'/>
-                <input type="text" placeholder="imageURL" className={styles.input} required onChange={handleChange} name='image'/>
-                <input type="date" placeholder="dd-mm-yyyy" className={styles.input} required onChange={handleChange} name='postedAt'/>
+                <input type="text" placeholder="title" className={styles.input} required onChange={handleChange} name='title' />
+                <input type="text" placeholder="imageURL" className={styles.input} required onChange={handleChange} name='image' />
+                <input type="date" placeholder="dd-mm-yyyy" className={styles.input} required onChange={handleChange} name='postedAt' />
                 <textarea
                     className={styles.textArea}
                     placeholder="description"
@@ -65,14 +82,6 @@ const AddBlog = () => {
                     name='description'
                 ></textarea>
 
-                <textarea
-                    className={styles.textArea}
-                    placeholder="code"
-                    cols="30"
-                    rows="10"
-                    onChange={handleChange}
-                    name = 'code'
-                ></textarea>
                 <button className={styles.submitBtn} onClick={addNewBLog}>Send</button>
             </form>
         </div>

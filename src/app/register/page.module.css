@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&family=Ubuntu&display=swap');
 .title {
     font-size: 64px;
     background: linear-gradient(to bottom, #194c33, #bbb);
@@ -24,6 +25,11 @@
     color: white;
   }
 
+  .toLoginPage{
+    font-family: Ubuntu;
+    margin: 18px;
+  }
+
   .input{
   padding: 20px;
   background-color: transparent;
@@ -34,6 +40,7 @@
   border: 3px solid #bbb;
   font-size: 20px;
   font-weight: bold;
+  font-family: Ubuntu;
 }
 
 .container {
