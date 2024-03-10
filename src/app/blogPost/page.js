@@ -18,7 +18,7 @@ const Blog = () => {
     async function fetchBlogs() {
       try {
         // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
-        const res = await fetch(`http://localhost:8080/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
         const data = await res.json()
         setBlogs(data)
         setLoading(false)
@@ -48,7 +48,7 @@ const Blog = () => {
     if (value.length !== 0) {
       // Api Call for search
       // ${process.env.NEXT_PUBLIC_API_URL}
-      const url = `http://localhost:8080/search-blogs/${value}`
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/search-blogs/${value}`
       const res = await fetch(url)
       const data = await res.json()
       setSearchedBlogs(data)
