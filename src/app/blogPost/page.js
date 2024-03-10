@@ -48,10 +48,12 @@ const Blog = () => {
     if (value.length !== 0) {
       // Api Call for search
       // ${process.env.NEXT_PUBLIC_API_URL}
+      setLoading(true)
       const url = `${process.env.NEXT_PUBLIC_API_URL}/search-blogs/${value}`
       const res = await fetch(url)
       const data = await res.json()
       setSearchedBlogs(data)
+      setLoading(false)
     } else setSearchedBlogs([])
 
   }
