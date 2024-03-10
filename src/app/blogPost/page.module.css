@@ -3,7 +3,18 @@
   align-items: center;
   justify-content: center;
 }
-
+.searchDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+}
+.searchedPopup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+}
 .container {
     display: flex;
     align-items: center;
@@ -39,6 +50,17 @@
     cursor: none;
   }
 
+  .input{
+    padding: 12px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #bbb;
+    border-radius: 10px;
+    border: 3px solid #bbb;
+    font-size: 20px;
+    font-weight: bold;
+  }
   .desc{
     font-size: 18px;
     color: #000;
