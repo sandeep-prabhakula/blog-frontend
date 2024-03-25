@@ -17,8 +17,15 @@ const Blog = () => {
   useEffect(() => {
     async function fetchBlogs() {
       try {
-        // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
+        // PROD
+
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
+        
+        // TEST
+
+        // const res = await fetch(`http://localhost:8080/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`, {
+        //   cache: "no-store",
+        // })
         const data = await res.json()
         setBlogs(data)
         setLoading(false)
@@ -58,6 +65,23 @@ const Blog = () => {
 
   }
 
+  // Delete Blog
+
+  const deleteBlog = async (e) => {
+    const blogId = e.currentTarget.getAttribute('blog-id')
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/delete-blog/${blogId}`
+    // const url = `http://localhost:8080/delete-blog/${blogId}`
+    const res = await fetch(url, {
+      method:'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${JSON.parse(window.sessionStorage.getItem('currentUser')).jwtToken}`,
+        'Access-Control-Allow-Origin': "*",
+        'Access-Control-Allow-Methods': 'DELETE'
+      }
+    })
+  }
+
   const optimizedSearch = useCallback(debounce(onTextChangeListener), [])
 
   const nextPage = async () => {
@@ -85,7 +109,30 @@ const Blog = () => {
           <div className={`${styles.searchedPopup}`}>
             <h1 className={`${styles.title} ${blogDescriptionFont.className}`}>Blogs related to your search</h1>
             {searchedblogs.map((item) => (
-              <Link href={`/blogPost/${item.id}`} className={styles.container} key={item.id}>
+              <div key={item.id}>
+                {window.sessionStorage.getItem('currentUser') ? <Link href={{
+            pathname: '/edit',
+            query: {
+              id: item.id
+            }
+          }}><div>
+              <Image
+                src='/images/editBlog.svg'
+                alt='edit'
+                width={48}
+                height={48} />
+            </div></Link> : <></>}
+          {window.sessionStorage.getItem('currentUser') ? <div >
+            <Image
+              src='/images/deleteBlog.svg'
+              alt='delete'
+              width={48}
+              height={48} 
+              onClick={deleteBlog} 
+              blog-id={item.id}/>
+          </div> : <></>}
+              <Link href={`/blogPost/${item.id}`} className={styles.container} >
+
                 <div className={styles.imageContainer}>
                   <Image
                     src={item.image}
@@ -100,6 +147,7 @@ const Blog = () => {
                   <p className={`${styles.desc} ${blogDescriptionFont.className}`}>{item.description.substring(0, 125)}</p>
                 </div>
               </Link>
+              </div>
             ))}
 
           </div> : <></>}
@@ -108,8 +156,30 @@ const Blog = () => {
       <div className={styles.titleDiv}>
         <h1 className={`${styles.pageTitle} ${imgTitleFont.className}`}>Blogs</h1>
       </div>
-      {blogs.map((item) => (
-        <Link href={`/blogPost/${item.id}`} className={styles.container} key={item.id}>
+      {blogs.map((item) => (<div key={item.id}>
+        {window.sessionStorage.getItem('currentUser') ? <Link href={{
+            pathname: '/edit',
+            query: {
+              id: item.id
+            }
+          }}><div>
+              <Image
+                src='/images/editBlog.svg'
+                alt='edit'
+                width={48}
+                height={48} />
+            </div></Link> : <></>}
+          {window.sessionStorage.getItem('currentUser') ? <div >
+            <Image
+              src='/images/deleteBlog.svg'
+              alt='delete'
+              width={48}
+              height={48} 
+              onClick={deleteBlog} 
+              blog-id={item.id}/>
+          </div> : <></>}
+        <Link href={`/blogPost/${item.id}`} className={styles.container} >
+
           <div className={styles.imageContainer}>
             <Image
               src={item.image}
@@ -119,11 +189,13 @@ const Blog = () => {
               className={styles.image}
             />
           </div>
+          
           <div className={styles.content}>
             <h1 className={`${styles.title} ${blogTitleFont.className}`}>{item.title}</h1>
             <p className={`${styles.desc} ${blogDescriptionFont.className}`}>{item.description.substring(0, 125)}</p>
           </div>
         </Link>
+      </div>
       ))}
 
       <div className={styles.pagination}>
