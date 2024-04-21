@@ -7,18 +7,18 @@ import Link from 'next/link'
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const Login = () => {
-    
+
     const [error, setError] = useState('')
     const router = useRouter()
-    const [loginDTO,setLoginDTO] =useState({
-        "email":"",
-        "password":""
+    const [loginDTO, setLoginDTO] = useState({
+        "email": "",
+        "password": ""
     })
 
-    const handleChange = (e)=>{
-        setLoginDTO((prev)=>({
+    const handleChange = (e) => {
+        setLoginDTO((prev) => ({
             ...prev,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         }))
     }
 
@@ -49,8 +49,9 @@ const Login = () => {
             <form className={styles.form}>
 
                 {error && <small className={styles.error}>{error}</small>}
-                <input type="email" placeholder="email" className={styles.input} onChange={handleChange}name='email' autoComplete='on'/>
-                <input type="password" placeholder="password" className={styles.input} onChange={handleChange} name='password'/>
+                <input type="email" placeholder="email" className={styles.input} onChange={handleChange} name='email' autoComplete='on' />
+                <input type="password" placeholder="password" className={styles.input} onChange={handleChange} name='password' />
+                <Link href={`/reset-password`} className={`${styles.toSignupPage}`}>Forgot Password?</Link>
             </form>
             <button className={styles.loginBtn} onClick={login}>Login</button>
             <Link href={`/register`} className={`${styles.toSignupPage}`}>New User? SignUp</Link>
