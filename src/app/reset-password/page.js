@@ -4,7 +4,7 @@ import localFont from 'next/font/local'
 import styles from './page.module.css'
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
-const page = () => {
+const ResetPassword = () => {
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
   const handleChange = (e) => {
@@ -44,4 +44,4 @@ const page = () => {
   )
 }
 
-export default page
+export default ResetPassword
