@@ -111,7 +111,7 @@ const Blog = async ({ params }) => {
             src={data.image}
             alt=""
             width={500}
-            height={400}
+            height={500}
             className={styles.image}
           />
         </div>
@@ -127,12 +127,13 @@ const Blog = async ({ params }) => {
           </SyntaxHighlighter>
 
           // Images
-          if (paragraph.startsWith("[")) return <div>
+          if (paragraph.startsWith("[")) return <div className={styles.imageContainer}>
             <Image
               src={paragraph.slice(1, -1)}
               alt=""
               width={500}
-              height={400}
+              height={500}
+              className={styles.image}
             />
           </div>
 

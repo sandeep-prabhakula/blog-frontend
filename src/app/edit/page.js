@@ -52,7 +52,7 @@ const EditBlog = () => {
     }
     const prodBlog = async()=>{
         // ${process.env.NEXT_PUBLIC_API_URL}
-        const res = await fetch(`http://localhost:8080/blog/${query}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog/${query}`, {
             cache: "no-store",
           })
           const data = await res.json()
