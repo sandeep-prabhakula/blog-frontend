@@ -101,8 +101,8 @@ const EditBlog = () => {
             {error && <small className={styles.error}>{error}</small>}
             <form className={styles.form}>
                 <input type="text" placeholder="title" className={styles.input} required onChange={handleChange} name='title' value={blog.title!==''?blog.title:""} />
-                {/* <input type="text" placeholder="imageURL" className={styles.input} required onChange={handleChange} name='image' value={blog.image!==''?blog.image:""} />
-                <input type="date" placeholder="dd-mm-yyyy" className={styles.input} required onChange={handleChange} name='postedAt' value={blog.postedAt!==''?blog.postedAt:""} /> */}
+                <input type="text" placeholder="imageURL" className={styles.input} required onChange={handleChange} name='image' value={blog.image!==''?blog.image:""} />
+                {/* <input type="date" placeholder="dd-mm-yyyy" className={styles.input} required onChange={handleChange} name='postedAt' value={blog.postedAt!==''?blog.postedAt:""} /> */}
                 <textarea
                     className={styles.textArea}
                     placeholder="description"

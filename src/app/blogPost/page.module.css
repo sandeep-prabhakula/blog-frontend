@@ -131,7 +131,6 @@
   }
 
   .modalBody {
-    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -143,4 +142,5 @@
     display: flex;
     justify-content: flex-end;
     font-size: 25px;
+    
   }

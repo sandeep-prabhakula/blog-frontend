@@ -5,6 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './page.module.css'
 import localFont from 'next/font/local'
+import PrevButton from '@/components/prevButton/PrevButton';
+import NextButton from '@/components/nextButton/NextButton';
+import CloseButton from '@/components/closeButton/CloseButton';
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const blogTitleFont = localFont({ src: "../../fonts/Corbert Condensed Black.otf" })
@@ -120,9 +123,9 @@ const Blog = () => {
           <div className={styles.modalWrapper}>
             <div className={styles.modal}>
               <div className={`${styles.modalHeader} ${blogTitleFont.className}`}>
-                <a href="#" onClick={modalPopup}>
-                  X
-                </a>
+                <div href="#" onClick={modalPopup}>
+                  <CloseButton/>
+                </div>
               </div>
               <div className={styles.modalBody}>
                 <h3 className={`${blogTitleFont.className}`}>Deletion alert</h3>
@@ -151,12 +154,12 @@ const Blog = () => {
                     id: item.id
                   }
                 }}>
-                    <Image
-                      src='/images/editBlog.svg'
-                      alt='edit'
-                      width={48}
-                      height={48} />
-                  </Link> : <></>}
+                  <Image
+                    src='/images/editBlog.svg'
+                    alt='edit'
+                    width={48}
+                    height={48} />
+                </Link> : <></>}
                 {window.sessionStorage.getItem('currentUser') ? <div >
                   <Image
                     src='/images/deleteBlog.svg'
@@ -198,12 +201,12 @@ const Blog = () => {
             id: item.id
           }
         }}>
-            <Image
-              src='/images/editBlog.svg'
-              alt='edit'
-              width={48}
-              height={48} />
-          </Link> : <></>}
+          <Image
+            src='/images/editBlog.svg'
+            alt='edit'
+            width={48}
+            height={48} />
+        </Link> : <></>}
         {window.sessionStorage.getItem('currentUser') ? <div >
           <Image
             src='/images/deleteBlog.svg'
@@ -237,12 +240,15 @@ const Blog = () => {
 
       <div className={styles.pagination}>
 
-        <button className={styles.nextBtn} style={{ display: `${pageNumber === 0 ? 'none' : 'block'}` }} onClick={prevPage}>
-          Previous
-        </button>
-        <button className={styles.nextBtn} onClick={nextPage} style={{ display: `${blogs.length < 5 ? 'none' : 'block'}` }}>
-          Next
-        </button>
+        <span style={{ display: `${pageNumber === 0 ? 'none' : 'block'}` }} onClick={prevPage} >
+
+        <PrevButton />
+        </span>
+        <span onClick={nextPage} style={{ display: `${blogs.length < 5 ? 'none' : 'block'}` }} >
+
+        <NextButton />
+        </span>
+
       </div>
     </div>
   );

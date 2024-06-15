@@ -11,7 +11,7 @@ const about = () => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <Image
-          src="https://images.pexels.com/photos/4709289/pexels-photo-4709289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="/aboutImage.webp"
           fill={true}
           alt=""
           className={styles.img}

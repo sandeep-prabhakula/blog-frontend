@@ -46,14 +46,14 @@ const Login = () => {
     return (
         <div className={styles.container}>
             <h1 className={`${styles.title} ${imgTitleFont.className}`}>Sign in</h1>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={login}>
 
                 {error && <small className={styles.error}>{error}</small>}
                 <input type="email" placeholder="email" className={styles.input} onChange={handleChange} name='email' autoComplete='on' />
                 <input type="password" placeholder="password" className={styles.input} onChange={handleChange} name='password' />
-                <Link href={`/reset-password`} className={`${styles.toSignupPage}`}>Forgot Password?</Link>
+                <button className={styles.loginBtn} type='submit' >Login</button>
             </form>
-            <button className={styles.loginBtn} onClick={login}>Login</button>
+            <Link href={`/reset-password`} className={`${styles.toSignupPage}`}>Forgot Password?</Link>
             <Link href={`/register`} className={`${styles.toSignupPage}`}>New User? SignUp</Link>
         </div>
     )
