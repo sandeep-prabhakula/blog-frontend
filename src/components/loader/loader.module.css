@@ -1,70 +1,61 @@
-.loader {
+.svgframe {
   position: relative;
-  width: 150px;
-  height: 150px;
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: 25px 25px 75px rgba(0,0,0,0.55);
-  border: 1px solid #333;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
 }
 
-.loader::before {
-  content: '';
+.svgframe svg {
   position: absolute;
-  inset: 20px;
-  background: transparent;
-  border: 1px dashed#444;
-  border-radius: 50%;
-  box-shadow: inset -5px -5px 25px rgba(0,0,0,0.25),
-  inset 5px 5px 35px rgba(0,0,0,0.25);
+  transition: .5s;
+  z-index: calc(1 - (0.2 * var(--j)));
+  transform-origin: center;
+  width: 344px;
+  height: 344px;
+  fill: none;
 }
 
-.loader::after {
-  content: '';
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px dashed#444;
-  box-shadow: inset -5px -5px 25px rgba(0,0,0,0.25),
-  inset 5px 5px 35px rgba(0,0,0,0.25);
+.svgframe:hover svg {
+  transform: rotate(-80deg) skew(30deg) translateX(calc(45px * var(--i))) translateY(calc(-35px * var(--i)));
 }
 
-.loader span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  height: 100%;
-  background: transparent;
-  transform-origin: top left;
-  animation: radar81 2s linear infinite;
-  border-top: 1px dashed #fff;
+.svgframe svg #center {
+  transition: .5s;
+  transform-origin: center;
 }
 
-.loader span::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: seagreen;
-  transform-origin: top left;
-  transform: rotate(-55deg);
-  filter: blur(30px) drop-shadow(20px 20px 20px seagreen);
+.svgframe:hover svg #center {
+  transform: rotate(-30deg) translateX(45px) translateY(-3px);
 }
 
-@keyframes radar81 {
-  0% {
-    transform: rotate(0deg);
-  }
+#out2 {
+  animation: rotate16 7s ease-in-out infinite alternate;
+  transform-origin: center;
+}
 
-  100% {
+#out3 {
+  animation: rotate16 3s ease-in-out infinite alternate;
+  transform-origin: center;
+  stroke: #ff0;
+}
+
+#inner3,
+#inner1 {
+  animation: rotate16 4s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+#center1 {
+  fill: #ff0;
+  animation: rotate16 2s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+@keyframes rotate16 {
+  to {
     transform: rotate(360deg);
   }
 }
