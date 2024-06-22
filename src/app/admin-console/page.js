@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import styles from './adminConsole.module.css'
 import localFont from 'next/font/local'
 import Link from 'next/link'
