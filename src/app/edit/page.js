@@ -9,7 +9,7 @@ const EditBlog = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
     const query = searchParams.get('id')
-    const [uid, setUid] = useState('')
+    const [uid, setUid] = useState({})
 
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('')
@@ -28,7 +28,7 @@ const EditBlog = () => {
             router.push('/login')
         } else {
             const temp = JSON.parse(window.sessionStorage.getItem('currentUser'))
-            setUid(temp.jwtToken)
+            setUid(temp)
             
             // PROD
 
@@ -80,7 +80,7 @@ const EditBlog = () => {
                     body: JSON.stringify(payload),
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${uid}`,
+                        "Authorization": `Bearer ${uid.jwtToken}`,
                         'Access-Control-Allow-Origin': "*",
                         'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
                     }

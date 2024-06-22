@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './footer.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import localFont from 'next/font/local'
+const endPointFont = localFont({ src: '../../fonts/osiris.otf' })
 const links = [
     {
       id: 1,
@@ -34,8 +36,8 @@ const Footer = () => {
     return (
         <div className={styles.container}>
             <div className={styles.heading}>
-                <h3>Sandeep Prabhakula </h3>
-                <small className={styles.copyright}>&copy;Copyright 2023 Codeverse Chronicles</small>
+                <h3 className={`${endPointFont.className}`}>Sandeep Prabhakula </h3>
+                <small className={`${endPointFont.className} ${styles.copyright}`}>&copy;Copyright 2023 Codeverse Chronicles</small>
             </div>
             <div className={styles.socialProfiles}>
 

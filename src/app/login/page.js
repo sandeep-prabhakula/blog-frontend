@@ -6,9 +6,11 @@ import localFont from 'next/font/local'
 import Link from 'next/link'
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
+const errorFont = localFont({src:'../../fonts/OpenSans.ttf'})
 const Login = () => {
 
     const [error, setError] = useState('')
+    const [success,setSuccess] = useState('')
     const router = useRouter()
     const [loginDTO, setLoginDTO] = useState({
         "email": "",
@@ -30,16 +32,25 @@ const Login = () => {
             setError('Provide a valid email id!!!')
         } else {
             setError('')
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/authenticate`, {
-                method: 'POST',
-                body: JSON.stringify(loginDTO),
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            })
-            const data = await res.json()
-            window.sessionStorage.setItem('currentUser', JSON.stringify(data))
-            router.push(`/`)
+            try {
+                
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/authenticate`, {
+                    method: 'POST',
+                    body: JSON.stringify(loginDTO),
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                const data = await res.json()
+                window.sessionStorage.setItem('currentUser', JSON.stringify(data))
+                if(data.userData.roles === 'ROLE_ADMIN')
+                router.push(`/admin-console`)
+            else router.push("/")
+            } catch (error) {
+                
+                setError('Something went wrong!')
+                console.log(error)
+            }
         }
     }
 
@@ -48,13 +59,13 @@ const Login = () => {
             <h1 className={`${styles.title} ${imgTitleFont.className}`}>Sign in</h1>
             <form className={styles.form} onSubmit={login}>
 
-                {error && <small className={styles.error}>{error}</small>}
+                {error && <small className={`${errorFont.className} ${styles.error}`}>{error}</small>}
                 <input type="email" placeholder="email" className={styles.input} onChange={handleChange} name='email' autoComplete='on' />
                 <input type="password" placeholder="password" className={styles.input} onChange={handleChange} name='password' />
                 <button className={styles.loginBtn} type='submit' >Login</button>
             </form>
             <Link href={`/reset-password`} className={`${styles.toSignupPage}`}>Forgot Password?</Link>
-            <Link href={`/register`} className={`${styles.toSignupPage}`}>New User? SignUp</Link>
+            <Link href={`/register`} className={`${styles.toSignupPage}`}>Don't have an account? SignUp</Link>
         </div>
     )
 }

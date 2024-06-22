@@ -5,7 +5,7 @@ import localFont from 'next/font/local'
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const imgDescFont = localFont({ src: '../../fonts/Azedo-Bold.otf' })
-
+const descFont = localFont({src:'../../fonts/OpenSans.ttf'})
 const about = () => {
   return (
     <div className={styles.container}>
@@ -26,7 +26,7 @@ const about = () => {
       <div className={styles.textContainer}>
         <div className={styles.item}>
           <h1 className={`${styles.title} ${imgTitleFont.className}`}>Who Am I?</h1>
-          <p className={styles.desc}>
+          <p className={`${descFont.className}`}>
             I&apos;m a technology enthusiast and coding specialist that want to share my expertise and thoughts with the rest of the world. My objective is to help people understand the ever-changing world of technology, remain up to speed on the newest trends, and improve their coding abilities.
             <br />
             <br />
@@ -35,7 +35,7 @@ const about = () => {
         </div>
         <div className={styles.item}>
           <h1 className={`${styles.title} ${imgTitleFont.className}`}>What I Do?</h1>
-          <p className={styles.desc}>
+          <p className={`${descFont.className}`}>
             I&apos;m committed to providing you with the most up-to-date information and insights into the ever-changing realm of technology. I scours the internet landscape for high-quality articles covering a wide range of topics, from new technology updates to emerging and trending technologies.
             <br />
             <br />

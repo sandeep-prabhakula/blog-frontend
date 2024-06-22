@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&family=Ubuntu&display=swap');
+
 
 .container{
     display: flex;
@@ -11,7 +11,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Ubuntu;
 }
 .copyright{
     border-left: 2px solid rgb(9, 105, 69);

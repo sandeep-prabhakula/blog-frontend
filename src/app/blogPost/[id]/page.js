@@ -5,7 +5,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import localFont from 'next/font/local'
 import SyntaxHighlighter from 'react-syntax-highlighter/dist/esm/default-highlight';
-import { darcula, dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { androidstudio } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 
 const blogTitleFont = localFont({ src: "../../../fonts/BebasNeue-Regular.otf" })
@@ -122,7 +122,7 @@ const Blog = async ({ params }) => {
           if (paragraph.endsWith(":")) return <h3 className={`${blogTitleFont.className}`}>{paragraph}<br /></h3>
 
           // Code
-          if (paragraph.startsWith("```")) return <SyntaxHighlighter style={dracula} showLineNumbers>
+          if (paragraph.startsWith("```")) return <SyntaxHighlighter style={androidstudio} showLineNumbers >
             {paragraph.slice(3, -3)}
           </SyntaxHighlighter>
 

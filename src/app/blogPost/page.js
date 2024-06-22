@@ -195,7 +195,7 @@ const Blog = () => {
         <h1 className={`${styles.pageTitle} ${imgTitleFont.className}`}>Blogs</h1>
       </div>
       {blogs.map((item) => (<div key={item.id}>
-        {window.sessionStorage.getItem('currentUser') ? <Link href={{
+        {JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles === 'ROLE_ADMIN' ? <Link href={{
           pathname: '/edit',
           query: {
             id: item.id
@@ -207,7 +207,7 @@ const Blog = () => {
             width={48}
             height={48} />
         </Link> : <></>}
-        {window.sessionStorage.getItem('currentUser') ? <div >
+        {JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles === 'ROLE_ADMIN' ? <div >
           <Image
             src='/images/deleteBlog.svg'
             alt='delete'

@@ -8,7 +8,7 @@ const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const AddBlog = () => {
     const router = useRouter()
 
-    const [uid, setUid] = useState('')
+    const [uid, setUid] = useState({})
 
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('')
@@ -24,7 +24,7 @@ const AddBlog = () => {
             router.push('/login')
         } else {
             const temp = JSON.parse(window.sessionStorage.getItem('currentUser'))
-            setUid(temp.jwtToken)
+            setUid(temp)
         }
     }, [])
 
@@ -49,7 +49,7 @@ const AddBlog = () => {
                     body: JSON.stringify(payload),
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${uid}`,
+                        "Authorization": `Bearer ${uid.jwtToken}`,
                         'Access-Control-Allow-Origin': "*",
                         'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
                     }

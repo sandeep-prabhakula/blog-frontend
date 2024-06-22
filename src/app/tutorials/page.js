@@ -78,7 +78,7 @@ const Tutorials = () => {
                                     width = {96}
                                     height = {96}
                                 />
-                                <h3 className={courseTitleFont.className}>{item.language}</h3>
+                                <h3 className={imgTitleFont.className}>{item.language}</h3>
                                 <Button text={`Start Learning`} url={item.url}/>
                             </div>
 
