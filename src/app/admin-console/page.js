@@ -18,6 +18,17 @@ const AdminConsole = () => {
     setHover(false)
   }
 
+  const [user,setUser] = useState({})
+
+  useEffect(() => {
+    if (!window.sessionStorage.getItem('currentUser')) {
+        router.push('/login')
+    }else{
+      const temp = JSON.parse(window.sessionStorage.getItem('currentUser'))
+      setUser(temp)
+    }
+}, [])
+
   return (
     <>
 
