@@ -20,7 +20,7 @@ const AddBlog = () => {
         image: "",
     })
     useEffect(() => {
-        if (!window.sessionStorage.getItem('currentUser')) {
+        if (JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles !== "ROLE_ADMIN") {
             router.push('/login')
         } else {
             const temp = JSON.parse(window.sessionStorage.getItem('currentUser'))

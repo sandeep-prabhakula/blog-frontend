@@ -4,6 +4,7 @@ import styles from './adminConsole.module.css'
 import localFont from 'next/font/local'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 
@@ -17,11 +18,11 @@ const AdminConsole = () => {
   const onMouseOutOnComposeButton = () => {
     setHover(false)
   }
-
+  const router = useRouter()
   const [user,setUser] = useState({})
 
   useEffect(() => {
-    if (!window.sessionStorage.getItem('currentUser')) {
+    if (JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles !== "ROLE_ADMIN"){
         router.push('/login')
     }else{
       const temp = JSON.parse(window.sessionStorage.getItem('currentUser'))
