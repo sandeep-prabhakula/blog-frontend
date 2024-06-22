@@ -65,7 +65,7 @@ const Login = () => {
                 <button className={styles.loginBtn} type='submit' >Login</button>
             </form>
             <Link href={`/reset-password`} className={`${styles.toSignupPage}`}>Forgot Password?</Link>
-            <Link href={`/register`} className={`${styles.toSignupPage}`}>Don't have an account? SignUp</Link>
+            <Link href={`/register`} className={`${styles.toSignupPage}`}>Don&apos;t have an account? SignUp</Link>
         </div>
     )
 }
