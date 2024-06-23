@@ -9,6 +9,7 @@ const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const Register = () => {
 
   const [error, setError] = useState('')
+  const [loading,setLoading] = useState(false)
   const router = useRouter()
   const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
   const [registerDTO, setRegisterDTO] = useState({
@@ -21,6 +22,8 @@ const Register = () => {
 
   const confirmPasswordHandler = (e) => {
     setConfirmPassword(e.target.value)
+    if (e.target.value !== registerDTO.password) setError(`Password didn't match`)
+    else setError('')
   }
 
   const handleChange = (e) => {
@@ -28,9 +31,20 @@ const Register = () => {
       ...prev,
       [e.target.name]: e.target.value
     }))
+    if (e.target.name === 'email' && !/\S+@\S+\.\S+/.test(registerDTO.email)) {
+      setError('Provide a valid email id');
+      return;
+    }
+    else setError('')
+    if (e.target.name === 'password' && !regex.test(registerDTO.password) || registerDTO.password.length < 8) {
+      setError('Setup a strong Password!')
+      return
+    }
+    else setError('')
   }
 
-  const register = async () => {
+  const register = async (e) => {
+    e.preventDefault()
     if (!registerDTO.email || !registerDTO.password || !confirmPassword) {
       setError('Empty Credential not accepted!')
     }
@@ -44,6 +58,7 @@ const Register = () => {
     }
     else {
       try {
+        setLoading(true)
         const url = `${process.env.NEXT_PUBLIC_API_URL}/register`
         await fetch(url, {
           method: 'POST',
@@ -52,9 +67,11 @@ const Register = () => {
             "Content-Type": "application/json",
           }
         })
+        setLoading(false)
         router.push("/login")
       }
       catch (err) {
+        setLoading(false)
         console.error(err)
         setError('Something went wrong ‼')
       }
@@ -65,17 +82,34 @@ const Register = () => {
     <>
       <div className={styles.container}>
         <h1 className={`${styles.title} ${imgTitleFont.className}`}>Register</h1>
-        <form className={styles.form}>
+        {error && <small className={styles.error}>{error}</small>}
+        <div className={`${styles.loginBox}`}>
 
-          {error && <small className={styles.error}>{error}</small>}
-          <input type="email" placeholder="email" className={styles.input} onChange={handleChange} name='email' autoComplete='on' required />
-          <input type="password" placeholder="password" className={styles.input} onChange={handleChange} name='password' required />
-          <input type="password" placeholder="confirm password" className={styles.input} onChange={confirmPasswordHandler} name='password' required />
-        </form>
-        <button className={styles.loginBtn} onClick={register} type='submit'>Register</button>
-        <Link href={`/login`} className={`${styles.toLoginPage}`}>
-        Already a user ? Login
-        </Link>
+          <form onSubmit={register}>
+            <div className={`${styles.userBox}`}>
+              <input type="email" required onChange={handleChange} name='email' autoComplete='on' />
+              <label>Email</label>
+            </div>
+            <div className={`${styles.userBox}`}>
+              <input type="password" required onChange={handleChange} name='password' />
+              <label>Password</label>
+            </div>
+            <div className={`${styles.userBox}`}>
+              <input type="password" required onChange={confirmPasswordHandler} name='password' />
+              <label>Confirm Password</label>
+            </div>
+            <center>
+              <button type='submit'>
+                {loading? 'Loading ... ':'Register'}
+                <span></span>
+              </button></center>
+          </form>
+        </div>
+        <span className={`${styles.toLoginPage}`}>
+          Already a user ? <b>
+            <Link href={`/login`}>Login</Link>
+            </b>
+        </span>
       </div>
     </>
   )
