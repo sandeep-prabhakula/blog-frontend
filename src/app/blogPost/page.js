@@ -28,7 +28,7 @@ const Blog = () => {
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
         setCurUser(
-          JSON.parse(window.localStorage.getItem('currentUser'))
+          JSON.parse(window.sessionStorage.getItem('currentUser'))
         )
         // TEST
 
@@ -134,7 +134,7 @@ const Blog = () => {
               <div className={styles.modalBody}>
                 <h3 className={`${blogTitleFont.className}`}>Deletion alert</h3>
                 <h3 className={`${blogDescriptionFont.className}`}>Do you really want to delete this blog?</h3>
-                <button className={styles.nextBtn} onClick={deleteBlog}>Delete</button>
+                <button className={styles.deleteBtn} onClick={deleteBlog}>Delete</button>
               </div>
             </div>
           </div>
@@ -150,48 +150,39 @@ const Blog = () => {
         {searchedblogs.length !== 0 ?
           <div className={`${styles.searchedPopup}`}>
             <h1 className={`${styles.title} ${blogDescriptionFont.className}`}>Blogs related to your search</h1>
-            {searchedblogs.map((item) => (
-              <div key={item.id}>
-                {window.sessionStorage.getItem('currentUser') ? <Link href={{
-                  pathname: '/edit',
-                  query: {
-                    id: item.id
-                  }
-                }}>
-                  <Image
-                    src='/images/editBlog.svg'
-                    alt='edit'
-                    width={48}
-                    height={48} />
-                </Link> : <></>}
-                {window.sessionStorage.getItem('currentUser') ? <div >
-                  <Image
-                    src='/images/deleteBlog.svg'
-                    alt='delete'
-                    width={48}
-                    height={48}
-                    onClick={deleteBlog}
-                    blog-id={item.id} />
-                </div> : <></>}
-                <Link href={`/blogPost/${item.id}`} className={styles.container} >
+            <div className={styles.mappingCards}>
 
-                  {/* <div className={styles.imageContainer}>
+              {searchedblogs.map((item) => (
+                <div key={item.id}>
+                  {window.sessionStorage.getItem('currentUser') ? <Link href={{
+                    pathname: '/edit',
+                    query: {
+                      id: item.id
+                    }
+                  }}>
                     <Image
-                      src={item.image}
-                      alt=""
-                      width={300}
-                      height={200}
-                      className={styles.image}
-                    />
-                  </div>
-                  <div className={styles.content}>
-                    <h1 className={`${styles.title} ${blogTitleFont.className}`}>{item.title}</h1>
-                    <p className={`${styles.desc} ${blogDescriptionFont.className}`}>{item.description.substring(0, 125)}</p>
-                  </div> */}
-                  <Card blog={item} />
-                </Link>
-              </div>
-            ))}
+                      src='/images/editBlog.svg'
+                      alt='edit'
+                      width={48}
+                      height={48} />
+                  </Link> : <></>}
+                  {window.sessionStorage.getItem('currentUser') ? <div >
+                    <Image
+                      src='/images/deleteBlog.svg'
+                      alt='delete'
+                      width={48}
+                      height={48}
+                      onClick={deleteBlog}
+                      blog-id={item.id} />
+                  </div> : <></>}
+                  <Link href={`/blogPost/${item.id}`}  >
+
+
+                    <Card blog={item} />
+                  </Link>
+                </div>
+              ))}
+            </div>
 
           </div> : <></>}
       </div>
@@ -223,22 +214,9 @@ const Blog = () => {
               onClick={modalPopup}
               blog-id={item.id} />
           </div> : <></>}
-          <Link href={`/blogPost/${item.id}`} className={styles.container} >
+          <Link href={`/blogPost/${item.id}`} >
 
-            {/* <div className={styles.imageContainer}>
-            <Image
-              src={item.image}
-              alt=""
-              width={300}
-              height={200}
-              className={styles.image}
-            />
-          </div>
 
-          <div className={styles.content}>
-            <h1 className={`${styles.title} ${blogTitleFont.className}`}>{item.title}</h1>
-            <p className={`${styles.desc} ${blogDescriptionFont.className}`}>{item.description.substring(0, 125)}...</p>
-          </div> */}
             <Card blog={item} />
 
           </Link>

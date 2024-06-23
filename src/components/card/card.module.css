@@ -1,58 +1,59 @@
 .card {
-    padding: 20px;
-    width: 330px;
-    min-height: 370px;
-    border-radius: 20px;
-    background: #e8e8e8;
-    box-shadow: 5px 5px 6px #dadada,
-                 -5px -5px 6px #f6f6f6;
-    transition: 0.4s;
-  }
-  
-  .card:hover {
-    translate: 0 -10px;
-  }
-  
-  .cardTitle {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2e54a7;
-    margin: 15px 0 0 10px;
+  padding: 15px;
+  width: 330px;
+  min-height: fit-content;
+  border-radius: 20px;
+  background: #e8e8e8;
+  box-shadow: 5px 5px 6px #dadada,
+    -5px -5px 6px #f6f6f6;
+  transition: 0.4s;
+}
 
-    overflow: hidden;
-   display: -webkit-box;
-   -webkit-line-clamp: 2; /* number of lines to show */
-           line-clamp: 2; 
-   -webkit-box-orient: vertical;
-  }
-  
-  .cardImage {
-    min-height: 170px;
-    background-color: #c9c9c9;
-    border-radius: 15px;
-    box-shadow: inset 8px 8px 10px #c3c3c3,
-              inset -8px -8px 10px #cfcfcf;
-  }
-  
-  .cardBody {
-    margin: 13px 0 0 10px;
-    color: rgb(31, 31, 31);
-    font-size: 15px;
+.card:hover {
+  translate: 0 -10px;
+}
 
-    overflow: hidden;
-   display: -webkit-box;
-   -webkit-line-clamp: 2; /* number of lines to show */
-           line-clamp: 2; 
-   -webkit-box-orient: vertical;
-  }
-  
-  .footer {
-    float: right;
-    margin: 28px 0 0 18px;
-    font-size: 13px;
-    color: #636363;
-  }
-  
-  .byName {
-    font-weight: 700;
-  }
+.cardTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2e54a7;
+  margin: 15px 0 0 10px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.cardImage {
+  overflow: hidden;
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.cardBody {
+  margin: 13px 0 0 10px;
+  color: rgb(31, 31, 31);
+  font-size: 15px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.footer {
+  float: right;
+  margin: 28px 0 0 18px;
+  font-size: 13px;
+  color: #636363;
+}
+
+.byName {
+  font-weight: 700;
+}

@@ -1,6 +1,10 @@
 import React from 'react'
 import styles from './card.module.css'
 import Image from 'next/image'
+import localFont from 'next/font/local'
+
+const blogTitleFont = localFont({ src: "../../fonts/Corbert Condensed Black.otf" })
+const blogDescriptionFont = localFont({ src: "../../fonts/NexaExtraLight.ttf" })
 const Card = ({ blog }) => {
     return (
         <>
@@ -12,11 +16,10 @@ const Card = ({ blog }) => {
                         height={200}
                     />
                 </div>
-                <p className={`${styles.cardTitle}`}>{blog.title}</p>
-                <p className={`${styles.cardBody}`}>
-                    {blog.description.substring(0, 125)}...
+                <p className={`${styles.cardTitle} ${blogTitleFont.className}`}>{blog.title}</p>
+                <p className={`${styles.cardBody} ${blogDescriptionFont.className}`}>
+                    {blog.description}
                 </p>
-                <p className={`${styles.footer}`}>Written by <span className={`${styles.byName}`}>Sandeep Prabhakula</span> on <span className={`${styles.date}`}>{ blog.postedAt}</span></p>
             </div>
         </>
     )
