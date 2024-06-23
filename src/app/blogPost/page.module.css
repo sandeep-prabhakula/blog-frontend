@@ -1,146 +1,164 @@
-.titleDiv{
+.titleDiv {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.searchDiv{
+
+.searchDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
 }
-.searchedPopup{
+
+.searchedPopup {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
 }
+
+.mappingCards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 50px;
+  margin: 2rem;
+  padding: 2rem;
+}
+
 .container {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    margin: 2rem;
-    padding: 2rem;
-    border:2px solid rgb(9, 105, 69);
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
-  }
-.dummyContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  
+  width: fit-content;
+  border: 2px solid rgb(9, 105, 69);
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+}
+
+.dummyContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-  .image{
-    object-fit: cover;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  
-  .title{
-    margin-bottom: 10px;
-  }
-  
-  .pageTitle {
-    font-size: 64px;
-    background: linear-gradient(to bottom, #194c33, #bbb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    cursor: none;
-  }
 
-  .input{
-    padding: 12px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: #bbb;
-    border-radius: 10px;
-    border: 3px solid #bbb;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  .desc{
-    font-size: 18px;
-    color: #000;
-  }
+.image {
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+}
 
-  @media (max-width:701px){
-    .container{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-  }
 
-  @media (prefers-color-scheme: dark) {
-    .desc{
-      font-size: 18px;
-      color: #999;
-    } 
-    .container{
-      box-shadow: 0 3px 10px rgb(255 255 255 / 0.5);
-    }
-  }
+.title {
+  margin-bottom: 10px;
+}
 
-  .nextBtn{
-    padding: 20px;
-    cursor: pointer;
-    background-color: #53c28b;
-    border: none;
-    border-radius: 5px;
-    width: max-content;
-    color: white;
-  }
-  
+.pageTitle {
+  font-size: 64px;
+  background: linear-gradient(to bottom, #194c33, #bbb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: none;
+}
 
-  .pagination{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
+.input {
+  padding: 12px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #bbb;
+  border-radius: 10px;
+  border: 3px solid #bbb;
+  font-size: 20px;
+  font-weight: bold;
+}
 
-  /* Delete Modal CSS */
-  .modal {
-    background: linear-gradient(to bottom, #194c33, #bbb);
-    height:100%;
-    width:100%;
-    border-radius: 15px;
-    padding: 15px;
-  }
+.desc {
+  font-size: 18px;
+  color: #000;
+}
 
-  .modalOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .modalWrapper {
-    width: auto;
-    height: auto;
-  }
-
-  .modalBody {
+@media (max-width:701px) {
+  .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    vertical-align: middle;
   }
-  
-  .modalHeader {
-    display: flex;
-    justify-content: flex-end;
-    font-size: 25px;
-    
+
+}
+
+@media (prefers-color-scheme: dark) {
+  .desc {
+    font-size: 18px;
+    color: #999;
   }
+
+  .container {
+    box-shadow: 0 3px 10px rgb(255 255 255 / 0.5);
+  }
+}
+
+.nextBtn {
+  padding: 20px;
+  cursor: pointer;
+  background-color: #53c28b;
+  border: none;
+  border-radius: 5px;
+  width: max-content;
+  color: white;
+}
+
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+/* Delete Modal CSS */
+.modal {
+  background: linear-gradient(to bottom, #194c33, #bbb);
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.modalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modalWrapper {
+  width: auto;
+  height: auto;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 25px;
+
+}

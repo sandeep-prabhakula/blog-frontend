@@ -8,6 +8,7 @@ import localFont from 'next/font/local'
 import PrevButton from '@/components/prevButton/PrevButton';
 import NextButton from '@/components/nextButton/NextButton';
 import CloseButton from '@/components/closeButton/CloseButton';
+import Card from '@/components/card/Card';
 
 const imgTitleFont = localFont({ src: '../../fonts/osiris.otf' })
 const blogTitleFont = localFont({ src: "../../fonts/Corbert Condensed Black.otf" })
@@ -19,13 +20,16 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
   const [showDeleteModal, setShowDeleteModal] = useState(false)
   const [deletingBlogId, setDeletingBlogID] = useState('')
+  const [curUser, setCurUser] = useState({})
   useEffect(() => {
     async function fetchBlogs() {
       try {
         // PROD
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`)
-
+        setCurUser(
+          JSON.parse(window.localStorage.getItem('currentUser'))
+        )
         // TEST
 
         // const res = await fetch(`http://localhost:8080/get-all-blogs?pageNumber=${pageNumber}&pageSize=5`, {
@@ -124,7 +128,7 @@ const Blog = () => {
             <div className={styles.modal}>
               <div className={`${styles.modalHeader} ${blogTitleFont.className}`}>
                 <div href="#" onClick={modalPopup}>
-                  <CloseButton/>
+                  <CloseButton />
                 </div>
               </div>
               <div className={styles.modalBody}>
@@ -171,7 +175,7 @@ const Blog = () => {
                 </div> : <></>}
                 <Link href={`/blogPost/${item.id}`} className={styles.container} >
 
-                  <div className={styles.imageContainer}>
+                  {/* <div className={styles.imageContainer}>
                     <Image
                       src={item.image}
                       alt=""
@@ -183,7 +187,8 @@ const Blog = () => {
                   <div className={styles.content}>
                     <h1 className={`${styles.title} ${blogTitleFont.className}`}>{item.title}</h1>
                     <p className={`${styles.desc} ${blogDescriptionFont.className}`}>{item.description.substring(0, 125)}</p>
-                  </div>
+                  </div> */}
+                  <Card blog={item} />
                 </Link>
               </div>
             ))}
@@ -194,31 +199,33 @@ const Blog = () => {
       <div className={styles.titleDiv}>
         <h1 className={`${styles.pageTitle} ${imgTitleFont.className}`}>Blogs</h1>
       </div>
-      {blogs.map((item) => (<div key={item.id}>
-        {JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles === 'ROLE_ADMIN' ? <Link href={{
-          pathname: '/edit',
-          query: {
-            id: item.id
-          }
-        }}>
-          <Image
-            src='/images/editBlog.svg'
-            alt='edit'
-            width={48}
-            height={48} />
-        </Link> : <></>}
-        {JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles === 'ROLE_ADMIN' ? <div >
-          <Image
-            src='/images/deleteBlog.svg'
-            alt='delete'
-            width={48}
-            height={48}
-            onClick={modalPopup}
-            blog-id={item.id} />
-        </div> : <></>}
-        <Link href={`/blogPost/${item.id}`} className={styles.container} >
+      <div className={styles.mappingCards}>
 
-          <div className={styles.imageContainer}>
+        {blogs.map((item) => (<div key={item.id} >
+          {curUser !== null && curUser.userData.roles === 'ROLE_ADMIN' ? <Link href={{
+            pathname: '/edit',
+            query: {
+              id: item.id
+            }
+          }}>
+            <Image
+              src='/images/editBlog.svg'
+              alt='edit'
+              width={48}
+              height={48} />
+          </Link> : <></>}
+          {curUser !== null && curUser.userData.roles === 'ROLE_ADMIN' ? <div >
+            <Image
+              src='/images/deleteBlog.svg'
+              alt='delete'
+              width={48}
+              height={48}
+              onClick={modalPopup}
+              blog-id={item.id} />
+          </div> : <></>}
+          <Link href={`/blogPost/${item.id}`} className={styles.container} >
+
+            {/* <div className={styles.imageContainer}>
             <Image
               src={item.image}
               alt=""
@@ -231,22 +238,23 @@ const Blog = () => {
           <div className={styles.content}>
             <h1 className={`${styles.title} ${blogTitleFont.className}`}>{item.title}</h1>
             <p className={`${styles.desc} ${blogDescriptionFont.className}`}>{item.description.substring(0, 125)}...</p>
-          </div>
+          </div> */}
+            <Card blog={item} />
 
-
-        </Link>
+          </Link>
+        </div>
+        ))}
       </div>
-      ))}
 
       <div className={styles.pagination}>
 
         <span style={{ display: `${pageNumber === 0 ? 'none' : 'block'}` }} onClick={prevPage} >
 
-        <PrevButton />
+          <PrevButton />
         </span>
         <span onClick={nextPage} style={{ display: `${blogs.length < 5 ? 'none' : 'block'}` }} >
 
-        <NextButton />
+          <NextButton />
         </span>
 
       </div>
