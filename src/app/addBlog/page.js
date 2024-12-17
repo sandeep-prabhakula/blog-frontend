@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import localFont from "next/font/local";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
 const imgTitleFont = localFont({ src: "../../fonts/osiris.otf" });
