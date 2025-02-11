@@ -22,7 +22,8 @@ const AdminConsole = () => {
   const [user,setUser] = useState({})
 
   useEffect(() => {
-    if (JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles !== "ROLE_ADMIN"){
+    let user = window.sessionStorage.getItem('currentUser')
+    if (user===null || JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles !== "ROLE_ADMIN"){
         router.push('/login')
     }else{
       const temp = JSON.parse(window.sessionStorage.getItem('currentUser'))

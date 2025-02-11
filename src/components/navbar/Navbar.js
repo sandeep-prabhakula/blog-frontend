@@ -1,7 +1,9 @@
-import React from 'react'
+"use client"
+import React, { useState, useEffect } from 'react';
 import styles from "./navbar.module.css";
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 import Icon from 'public/logo.png'
 import localFont from 'next/font/local'
 
@@ -32,15 +34,25 @@ const links = [
     id: 5,
     title: "Contact",
     url: "/contact",
-  },
-  {
-    id: 6,
-    title: "Login",
-    url: "/login",
-  },
-  
+  }  
 ];
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+  useEffect(() => {
+    // Example: Check if user is logged in (replace with actual auth logic)
+    const userLoggedIn = sessionStorage.getItem("currentUser") !== null;
+    setIsLoggedIn(userLoggedIn);
+  }, []);
+  const handleAuthToggle = () => {
+    if (isLoggedIn) {
+      setIsLoggedIn(isLoggedIn);
+      sessionStorage.removeItem('currentUser')
+      router.push('/login')
+    } else {
+      setIsLoggedIn(!isLoggedIn); 
+    }
+  };
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.logo}>
@@ -60,6 +72,9 @@ const Navbar = () => {
             {link.title}
           </Link>
         ))}
+        <button onClick={handleAuthToggle} className={`${styles.link} ${endPointFont.className}`}>
+          {isLoggedIn ? "Logout" : "Login"}
+        </button>
       </div>
     </div>
   )
