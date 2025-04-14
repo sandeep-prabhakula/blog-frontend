@@ -65,6 +65,16 @@
     border-radius: 10px;
     font-family: Ubuntu;
   }
+  .success {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    border-radius: 10px;
+  }
 
   /* Define media query for different screen sizes */
   @media (min-width: 576px) {
