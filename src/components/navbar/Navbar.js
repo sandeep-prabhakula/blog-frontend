@@ -25,11 +25,11 @@ const links = [
     title: "Blogs",
     url: "/blogPost",
   },
-  {
-    id: 4,
-    title: "Tutorials",
-    url: "/tutorials",
-  },
+  // {
+  //   id: 4,
+  //   title: "Tutorials",
+  //   url: "/tutorials",
+  // },
   {
     id: 5,
     title: "Contact",
@@ -44,15 +44,6 @@ const Navbar = () => {
     const userLoggedIn = sessionStorage.getItem("currentUser") !== null;
     setIsLoggedIn(userLoggedIn);
   }, []);
-  const handleAuthToggle = () => {
-    if (isLoggedIn) {
-      setIsLoggedIn(isLoggedIn);
-      sessionStorage.removeItem('currentUser')
-      router.push('/login')
-    } else {
-      setIsLoggedIn(!isLoggedIn); 
-    }
-  };
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.logo}>
@@ -72,9 +63,7 @@ const Navbar = () => {
             {link.title}
           </Link>
         ))}
-        <button onClick={handleAuthToggle} className={`${styles.link} ${endPointFont.className}`}>
-          {isLoggedIn ? "Logout" : "Login"}
-        </button>
+        
       </div>
     </div>
   )
