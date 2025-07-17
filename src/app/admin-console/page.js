@@ -34,6 +34,7 @@ const AdminConsole = () => {
     const res =await response.text()
     console.log(res)
     if(res === "Logout successful"){
+      window.sessionStorage.removeItem('currentUser')
       router.push("/login")
     }
   }
