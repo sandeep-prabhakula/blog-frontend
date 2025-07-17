@@ -20,7 +20,23 @@ const AdminConsole = () => {
   }
   const router = useRouter()
   const [user,setUser] = useState({})
-
+  const logoutURL = `${process.env.NEXT_PUBLIC_API_URL}/logout`
+  // const logoutURL = "http://localhost:8080/logout"
+  const logout = async(e)=>{
+    const response = await fetch(logoutURL,{
+      method:"POST",
+      headers:{
+        Authorization: `Bearer ${user.jwtToken}`,
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST,PATCH,OPTIONS",
+      }
+    })
+    const res =await response.text()
+    console.log(res)
+    if(res === "Logout successful"){
+      router.push("/login")
+    }
+  }
   useEffect(() => {
     let user = window.sessionStorage.getItem('currentUser')
     if (user===null || JSON.parse(window.sessionStorage.getItem('currentUser')).userData.roles !== "ROLE_ADMIN"){
@@ -56,8 +72,11 @@ const AdminConsole = () => {
             }}>Compose</span>
           </button>
         </Link>
+        <button className={`${styles.floatingActionButton} ${imgTitleFont.className}`} onClick={logout}>
+            Logout
+          </button>
       </div>
-
+            
     </>
   )
 }
