@@ -169,7 +169,7 @@ const Blog = () => {
           onChange={optimizedSearch}
         />
 
-        <Dropdown selectedValue={selectedValue}onValueChange={handleValueChange} />
+        
         {searchedblogs.length !== 0 ? (
           <div className={`${styles.searchedPopup}`}>
             <h1 className={`${styles.title} ${blogDescriptionFont.className}`}>
@@ -227,6 +227,7 @@ const Blog = () => {
         <h1 className={`${styles.pageTitle} ${imgTitleFont.className}`}>
           Blogs
         </h1>
+        <Dropdown selectedValue={selectedValue}onValueChange={handleValueChange} />
       </div>
       <div className={styles.mappingCards}>
         {blogs.map((item) => (
