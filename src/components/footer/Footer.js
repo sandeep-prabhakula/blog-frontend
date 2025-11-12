@@ -37,7 +37,7 @@ const Footer = () => {
         <div className={styles.container}>
             <div className={styles.heading}>
                 <h3 className={`${endPointFont.className}`}>Sandeep Prabhakula </h3>
-                <small className={`${endPointFont.className} ${styles.copyright}`}>&copy;Copyright 2023 Codeverse Chronicles</small>
+                <small className={`${endPointFont.className} ${styles.copyright}`}>&copy;Copyright {new Date().getFullYear()} Codeverse Chronicles</small>
             </div>
             <div className={styles.socialProfiles}>
 
