@@ -5,31 +5,22 @@ import Image from 'next/image'
 import localFont from 'next/font/local'
 const endPointFont = localFont({ src: '../../fonts/osiris.otf' })
 const links = [
+    
     {
       id: 1,
-      image: "/images/instagram.svg",
-      url: "https://instagram.com/sandyo9o7",
-    },
-    {
-      id: 2,
-      image: "/images/twitter.svg",
-      url: "https://twitter.com/SandeepSandy_o9",
-    },
-    {
-      id: 3,
       image: "/images/linkedin.svg",
       url: "https://linkedin.com/in/sandeep-prabhakula",
     },
     {
-      id: 4,
+      id: 2,
       image: "/images/github.svg",
       url: "https://github.com/sandeep-prabhakula",
     },
     {
-      id: 5,
-      image: "/images/facebook.svg",
-      url: "https://facebook.com/sandeep.prabhakula",
-    },
+      id:3,
+      image:'/images/mail.svg',
+      url:"mailto:codeverse.chronicles.tech.blogs@gmail.com"
+    }
     
   ];
 const Footer = () => {
