@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import Button from "@/components/button/Button";
-import Hero from "public/hero.png";
+import Hero from "public/images/hero.png";
 import Head from 'next/head';
-import Logo from 'public/logo.png'
+import Logo from 'public/images/logo.png'
 import localFont from 'next/font/local'
 const headingFont = localFont({ src: '../fonts/osiris.otf' })
 const captionFont = localFont({ src : '../fonts/ELIXIA.ttf' })
