@@ -123,12 +123,12 @@ const Blog = async ({ params }) => {
       <hr />
       <div className={styles.content}>
         <div className={styles.imageContainer}>
-          <Image
+          {/* <Image
             src={data.image}
             alt=""
             width={500}
             height={500}
-            className={styles.image}
+            className={styles.image} */}
           />
         </div>
         <div className={styles.content}>
@@ -154,13 +154,13 @@ const Blog = async ({ params }) => {
             if (paragraph.startsWith("["))
               return (
                 <div className={styles.imageContainer}>
-                  <Image
+                  {/* <Image
                     src={paragraph.slice(1, -1)}
                     alt=""
                     width={500}
                     height={500}
                     className={styles.image}
-                  />
+                  /> */}
                 </div>
               );
 
