@@ -128,8 +128,8 @@ const Blog = async ({ params }) => {
             alt=""
             width={500}
             height={500}
-            className={styles.image} */}
-          />
+            className={styles.image}
+          /> */}
         </div>
         <div className={styles.content}>
           {isNewFormat?<div dangerouslySetInnerHTML={{__html:data.description}}/>:data.description.split("\n\n").map((paragraph) => {
