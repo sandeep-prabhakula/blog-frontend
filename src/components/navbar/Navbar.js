@@ -25,24 +25,31 @@ const links = [
     title: "Blogs",
     url: "/blogPost",
   },
-  // {
-  //   id: 4,
-  //   title: "Tutorials",
-  //   url: "/tutorials",
-  // },
+  
   {
-    id: 5,
+    id: 4,
     title: "Contact",
     url: "/contact",
-  }  
+  } 
 ];
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
+  const[ip, setIp] = useState("")
   useEffect(() => {
     // Example: Check if user is logged in (replace with actual auth logic)
     const userLoggedIn = sessionStorage.getItem("currentUser") !== null;
     setIsLoggedIn(userLoggedIn);
+
+    async function getIP() {
+      try{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-client-ip`)
+        const data = await res.json()
+        setIp(data.get("clientIP"));
+      }catch(error){
+        console.error(error);
+      }
+    }
   }, []);
   return (
     <div className={styles.container}>
@@ -63,7 +70,7 @@ const Navbar = () => {
             {link.title}
           </Link>
         ))}
-        
+        {ip}
       </div>
     </div>
   )
