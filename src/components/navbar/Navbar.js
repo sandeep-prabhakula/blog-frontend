@@ -50,6 +50,7 @@ const Navbar = () => {
         console.error(error);
       }
     }
+    getIP()
   }, []);
   return (
     <div className={styles.container}>
