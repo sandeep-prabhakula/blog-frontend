@@ -70,7 +70,7 @@ const Navbar = () => {
             {link.title}
           </Link>
         ))}
-        {ip}
+        <p>{ip}</p>
       </div>
     </div>
   )
