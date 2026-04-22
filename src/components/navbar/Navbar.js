@@ -45,7 +45,7 @@ const Navbar = () => {
       try{
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-client-ip`)
         const data = await res.json()
-        setIp(data.get("clientIP"));
+        setIp(data["clientIP"]);
       }catch(error){
         console.error(error);
       }
@@ -54,6 +54,7 @@ const Navbar = () => {
   }, []);
   return (
     <div className={styles.container}>
+      
       <Link href="/" className={styles.logo}>
         <Image
           src={Icon}
@@ -65,13 +66,14 @@ const Navbar = () => {
           Codeverse Chronicles
         </h1>
       </Link>
+      
       <div className={styles.links}>
         {links.map((link) => (
           <Link key={link.id} href={link.url} className={`${styles.link} ${endPointFont.className}`}>
             {link.title}
           </Link>
         ))}
-        <p>{ip}</p>
+        <p>Your IP: {ip}</p>
       </div>
     </div>
   )
