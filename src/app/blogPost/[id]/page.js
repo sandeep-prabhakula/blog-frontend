@@ -154,13 +154,13 @@ const Blog = async ({ params }) => {
             if (paragraph.startsWith("["))
               return (
                 <div className={styles.imageContainer}>
-                  {/* <Image
+                  <Image
                     src={paragraph.slice(1, -1)}
                     alt=""
                     width={500}
                     height={500}
                     className={styles.image}
-                  /> */}
+                  />
                 </div>
               );
 
