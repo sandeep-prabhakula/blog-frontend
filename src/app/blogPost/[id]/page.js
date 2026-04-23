@@ -84,17 +84,17 @@ const Blog = async ({ params }) => {
         <meta property="og:locale" content="en_US" />
         <meta
           property="og:url"
-          content={`https://codeverse-chronicles.netlify.app/${data.id}`}
+          content={`https://codeverse-chronicles.vercel.app/${data.id}`}
         />
         <meta
           property="og:site_name"
-          content="https://codeverse-chronicles.netlify.app"
+          content="https://codeverse-chronicles.vercel.app"
         />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content={`${data.title}`} />
         <meta
           property="twitter:url"
-          content={`https://codeverse-chronicles.netlify.app/${data.id}`}
+          content={`https://codeverse-chronicles.vercel.app/${data.id}`}
         />
         <meta property="twitter:image" content={`${data.image}`} />
         <meta property="twitter:description" content={`${data.description}`} />
