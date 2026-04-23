@@ -10,7 +10,7 @@ import PrevButton from "@/components/prevButton/PrevButton";
 import NextButton from "@/components/nextButton/NextButton";
 import CloseButton from "@/components/closeButton/CloseButton";
 import Card from "@/components/card/Card";
-import { useSearchParams } from "next/navigation";
+import { useRouter, usePathname, useSearchParams } from "next/navigation"; // Added imports
 const imgTitleFont = localFont({ src: "../../fonts/osiris.otf" });
 const blogTitleFont = localFont({
   src: "../../fonts/Corbert Condensed Black.otf",
@@ -19,32 +19,41 @@ const blogDescriptionFont = localFont({
   src: "../../fonts/NexaExtraLight.ttf",
 });
 const Blog = () => {
-  const searchParams = useSearchParams();
   const [searchedblogs, setSearchedBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
-  const [pageNumber, setPageNumber] = useState(0);
   const [loading, setLoading] = useState(true);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deletingBlogId, setDeletingBlogID] = useState("");
   const [curUser, setCurUser] = useState({});
-  const [selectedValue, setSelectedValue] = useState(5);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const pageNumber = Number(searchParams.get("pageNumber")) || 0;
+  const selectedValue = Number(searchParams.get("pageSize")) || 5;
 
-  // const pageSize = searchParams.get("pageSize");
+    useEffect(() => {
+    if (!searchParams.has("pageNumber") || !searchParams.has("pageSize")) {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("pageNumber", pageNumber.toString());
+      params.set("pageSize", selectedValue.toString());
+      router.replace(`${pathname}?${params.toString()}`);
+    }
+  }, []);
+
+  const updateURL = (newPage, newSize) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("pageNumber", newPage.toString());
+    params.set("pageSize", newSize.toString());
+    router.push(`${pathname}?${params.toString()}`);
+  };
+  
   useEffect(() => {
+    
     async function fetchBlogs() {
       try {
-        // PROD
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/get-all-blogs?pageNumber=${pageNumber}&pageSize=${selectedValue}`)
         
-        // TEST
-
-        // const res = await fetch(
-        //   `http://localhost:8080/get-all-blogs?pageNumber=${pageNumber}&pageSize=${pageSize}`,
-        //   {
-        //     cache: "no-store",
-        //   }
-        // );
         setCurUser(JSON.parse(window.sessionStorage.getItem("currentUser")));
         const data = await res.json();
         setBlogs(data);
@@ -71,8 +80,6 @@ const Blog = () => {
   const onTextChangeListener = async (e) => {
     const value = e.target.value;
     if (value.length !== 0) {
-      // Api Call for search
-      // ${process.env.NEXT_PUBLIC_API_URL}
       setLoading(true);
       const url = `${process.env.NEXT_PUBLIC_API_URL}/search-blogs/${value}`;
       const res = await fetch(url);
@@ -85,10 +92,10 @@ const Blog = () => {
   // Delete Blog
 
   const deleteBlog = async (e) => {
-    // const blogId = e.currentTarget.getAttribute('blog-id')
+    
     const blogId = deletingBlogId;
     const url = `${process.env.NEXT_PUBLIC_API_URL}/delete-blog/${blogId}`;
-    // const url = `http://localhost:8080/delete-blog/${blogId}`
+    
     try {
       await fetch(url, {
         method: "DELETE",
@@ -110,7 +117,8 @@ const Blog = () => {
 
   // dropdown pagesize
   const handleValueChange = async(newValue) => {
-    setSelectedValue(newValue);
+    
+    updateURL(0, newValue);
   };
 
   // Open and Close modals
@@ -123,11 +131,11 @@ const Blog = () => {
 
   const nextPage = async () => {
     setBlogs([]);
-    setPageNumber((prevActiveStep) => prevActiveStep + 1);
+    updateURL(pageNumber + 1, selectedValue);
   };
   const prevPage = async () => {
     setBlogs([]);
-    setPageNumber((prevActiveStep) => prevActiveStep - 1);
+    updateURL(Math.max(0, pageNumber - 1), selectedValue);
   };
 
   if (blogs.length === 0 || loading)
