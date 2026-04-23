@@ -123,13 +123,13 @@ const Blog = async ({ params }) => {
       <hr />
       <div className={styles.content}>
         <div className={styles.imageContainer}>
-          {/* <Image
+          <Image
             src={data.image}
             alt=""
             width={500}
             height={500}
             className={styles.image}
-          /> */}
+          />
         </div>
         <div className={styles.content}>
           {isNewFormat?<div dangerouslySetInnerHTML={{__html:data.description}}/>:data.description.split("\n\n").map((paragraph) => {
